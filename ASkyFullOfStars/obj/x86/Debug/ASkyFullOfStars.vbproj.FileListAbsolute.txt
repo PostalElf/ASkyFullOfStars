@@ -1,0 +1,8 @@
+E:\Visual Studio Projects\ASkyFullOfStars\ASkyFullOfStars\bin\Debug\ASkyFullOfStars.exe
+E:\Visual Studio Projects\ASkyFullOfStars\ASkyFullOfStars\bin\Debug\ASkyFullOfStars.pdb
+E:\Visual Studio Projects\ASkyFullOfStars\ASkyFullOfStars\bin\Debug\ASkyFullOfStars.xml
+E:\Visual Studio Projects\ASkyFullOfStars\ASkyFullOfStars\obj\x86\Debug\ASkyFullOfStars.Resources.resources
+E:\Visual Studio Projects\ASkyFullOfStars\ASkyFullOfStars\obj\x86\Debug\ASkyFullOfStars.vbproj.GenerateResource.Cache
+E:\Visual Studio Projects\ASkyFullOfStars\ASkyFullOfStars\obj\x86\Debug\ASkyFullOfStars.exe
+E:\Visual Studio Projects\ASkyFullOfStars\ASkyFullOfStars\obj\x86\Debug\ASkyFullOfStars.xml
+E:\Visual Studio Projects\ASkyFullOfStars\ASkyFullOfStars\obj\x86\Debug\ASkyFullOfStars.pdb
