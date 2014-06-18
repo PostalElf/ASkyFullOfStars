@@ -11,6 +11,7 @@
     End Property
 
     Public Overrides Function ToString() As String
-        Return name
+        'Return name
+        Return planet.type.ToString & " " & supply.Item(0).ToString
     End Function
 End Class

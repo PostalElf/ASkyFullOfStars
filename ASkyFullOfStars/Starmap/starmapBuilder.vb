@@ -22,7 +22,7 @@ Public Class starmapBuilder
     Private Property numPlanets As New range(3, 7)
     Private Const pathStarnamelist As String = "starnames.txt"
     Private Property starnameList As List(Of String) = filegetStarname()
-    Public Function newStar(_starmap As starmap) As star
+    Public Function newStar(ByRef _starmap As starmap) As star
         Dim star As New star
 
         With star
@@ -66,14 +66,14 @@ Public Class starmapBuilder
     Private Property numCities As New range(2, 5)
     Private Property planetGovernmentList As New List(Of eGovernment)
     Private Property planetTypeList As New List(Of ePlanetType)
-    Private Function newPlanet(_star As star, _number As Integer) As planet
+    Private Function newPlanet(ByRef _star As star, _number As Integer) As planet
         Dim planet As New planet
 
         With planet
             .star = _star
             .number = _number
-            .government = rndPlanetGovernment
-            .type = rndPlanetType
+            .government = rndPlanetGovernment()
+            .type = rndPlanetType()
 
             For n = 1 To numCities.roll
                 .cities.Add(newCity(planet, n))
@@ -117,14 +117,31 @@ Public Class starmapBuilder
     End Sub
 
 
-    Private Function newCity(_planet As planet, _number As Integer) As city
+    Private Property demandList As New List(Of eGood)
+    Private Function newCity(ByRef _planet As planet, _number As Integer) As city
         Dim city As New city
 
         With city
             .planet = _planet
             .number = _number
+            .supply.Add(rndSupply(_planet.type))
+            .demand.Add(rndDemand)
         End With
 
         Return city
+    End Function
+    Private Function rndSupply(_type As ePlanetType) As eGood
+        Dim roll As Integer = Int(Rnd() * 5 + 1)
+        Select Case _type
+            Case ePlanetType.Mining 'do nothing
+            Case ePlanetType.Industrial : roll += 10
+            Case ePlanetType.Sprawl : roll += 20
+            Case ePlanetType.Agrarian : roll += 30
+            Case ePlanetType.Research : roll += 40
+        End Select
+        Return roll
+    End Function
+    Private Function rndDemand() As eGood
+
     End Function
 End Class
