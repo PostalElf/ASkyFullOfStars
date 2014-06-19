@@ -1,8 +1,7 @@
 ﻿Module Module1
 
     Sub Main()
-        Dim demiurge As New starmapBuilder
-        Dim starmap As starmap = demiurge.newStarmap(1)
+        Dim starmap As New starmap(New starmapBuilder(1))
 
         For Each star In starmap.stars
             For Each planet In star.planets

@@ -20,5 +20,11 @@
             Return total
         End Get
     End Property
+
+    Public Sub New(ByRef starmapBuilder As starmapBuilder)
+        While starmapBuilder.size > 0
+            stars.Add(New star(starmapBuilder, Me))
+        End While
+    End Sub
 End Class
 

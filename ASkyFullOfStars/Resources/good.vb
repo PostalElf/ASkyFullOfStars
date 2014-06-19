@@ -1,7 +1,12 @@
 ﻿Public Class good
     Public Property type As eGood
+    Public Property source As location
+    Public Property destination As location
 
-    Public Sub New(_type As eGood)
+    Public Overrides Function ToString() As String
+        Return type.ToString
+    End Function
+    Public Sub New(_type As eGood, _source As location, _destination As location)
         type = _type
     End Sub
 End Class
