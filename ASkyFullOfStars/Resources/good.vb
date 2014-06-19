@@ -9,6 +9,42 @@
     Public Sub New(_type As eGood, _source As location, _destination As location)
         type = _type
     End Sub
+
+    Public Shared Function goodType2String(_type As eGood) As String
+        Select Case _type
+            Case eGood.HMetals : Return "Heavy Metals"
+            Case eGood.PStones : Return "Precious Stones"
+            Case eGood.CMaterials : Return "Construction Materials"
+            Case eGood.IWaste : Return "Industrial Waste"
+            Case eGood.NGas : Return "Natural Gas"
+
+            Case eGood.CElect : Return "Consumer Electronics"
+            Case eGood.SArms : Return "Small Arms"
+            Case eGood.PLuxes : Return "Petit Luxes"
+            Case eGood.HMachinery : Return "Heavy Machinery"
+            Case eGood.PBuilding : Return "Prefab Buildings"
+
+            Case eGood.HArt : Return "High Art"
+            Case eGood.PCulture : Return "Popular Culture"
+            Case eGood.MMedia : Return "Mass Media"
+            Case eGood.HSlaves : Return "Human Slaves"
+            Case eGood.RDrugs : Return "Recreational Drugs"
+
+            Case eGood.APets : Return "Alien Pets"
+            Case eGood.EFoods : Return "Exotic Foods"
+            Case eGood.ACompounds : Return "Azothic Compounds"
+            Case eGood.XPharm : Return "Xenobiological Pharmaceuticals"
+            Case eGood.ETourism : Return "Eden Tourism"
+
+            Case eGood.CPatents : Return "Commercial Patents"
+            Case eGood.SSavants : Return "Scientific Savants"
+            Case eGood.CSavants : Return "Cultural Savants"
+            Case eGood.ADesigns : Return "Architectural Designs"
+            Case eGood.AIntel : Return "Artificial Intelligences"
+
+            Case Else : Return Nothing
+        End Select
+    End Function
 End Class
 
 Public Enum eGood
