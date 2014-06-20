@@ -26,5 +26,15 @@
             stars.Add(New star(starmapBuilder, Me))
         End While
     End Sub
+    Public Sub New()
+        'do nothing
+    End Sub
+
+    Public Function getStar(name As String) As star
+        For Each star In stars
+            If star.name = name Then Return star
+        Next
+        Return Nothing
+    End Function
 End Class
 

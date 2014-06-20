@@ -17,4 +17,11 @@
     Public Sub New(_starmap As starmap)
         starmap = _starmap
     End Sub
+
+    Public Function getPlanet(number As Integer) As planet
+        For Each planet In planets
+            If planet.number = number Then Return planet
+        Next
+        Return Nothing
+    End Function
 End Class

@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="Agents\agent.vb" />
     <Compile Include="bugcatch.vb" />
+    <Compile Include="filefetch.vb" />
     <Compile Include="Module1.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
