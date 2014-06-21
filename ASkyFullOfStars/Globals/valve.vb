@@ -21,7 +21,7 @@ Module valve
         Return total
     End Function
 
-    Public Function sign(value As Integer) As String
+    Public Function sign(value As Decimal) As String
         If value < 0 Then Return "" Else Return "+"
     End Function
 

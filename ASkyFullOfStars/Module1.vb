@@ -20,18 +20,29 @@
         Dim capital As New capital(_starmap)
         capital.assets.Add(New asset("Imperial Bonds", capital, 999, 3))
 
+        'good test
         Dim sourceCity As city = _starmap.getCity("Rhea", 7, 3)
         sourceCity.supply.Add(eGood.ACompounds)
         Dim destCity As city = _starmap.getCity("Rhea", 5, 5)
         destCity.demand.Add(eGood.ACompounds)
         capital.goods.Add(New good(eGood.ACompounds, sourceCity, destCity))
 
-        displayCapital(capital)
+
+        'asset test
+        destCity.assets.Add(New asset("Ouroboros Construction", destCity, 3, -0.3))
+
+        For n = 1 To 5
+            Console.Clear()
+            Console.WriteLine("Turn " & n)
+            Console.WriteLine(capital.ToString)
+            Console.WriteLine()
+            Console.WriteLine(destCity.ToString)
+            Console.ReadLine()
+
+            destCity.tick()
+        Next
     End Sub
-    Private Sub displayCapital(_capital As capital)
-        Console.WriteLine(_capital.ToString)
-        Console.ReadLine()
-    End Sub
+
 
     Private Sub testStarmap()
         Console.WriteLine("1. Fetch")

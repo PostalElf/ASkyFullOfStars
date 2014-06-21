@@ -21,6 +21,7 @@
     Public Property supply As New List(Of eGood)
     Public Property demand As New List(Of eGood)
     Public Property assets As New List(Of asset)
+    Public Property newAssets As New List(Of asset)
     Public ReadOnly Property assetIncome As Decimal
         Get
             Dim total As Decimal = 0
@@ -67,10 +68,15 @@
     Public Function tick() As List(Of report)
         Dim replist As New List(Of report)
 
+        'tick assets and remove all whose ttl = 0
+        'note that constructing assets are unfolded within asset.tick and added to newAssets
+        'but asset addition and removal must take place outside of asset
         For Each asset In assets
             Dim report As report = asset.tick()
             If report Is Nothing = False Then replist.Add(report)
         Next
+        assets.AddRange(newAssets)
+        newAssets.Clear()
         assets.RemoveAll(Function(a) a.ttl <= 0)
 
         Return replist

@@ -23,7 +23,7 @@
             Select Case name
                 Case "Ouroboros Construction"
                     Dim city As city = CType(location, city)
-                    city.assets.Add(New asset("Ouroboros", city, 999, -0.1))
+                    city.newAssets.Add(New asset("Ouroboros", city, 999, -0.1))
                     Return New report
 
                 Case Else
