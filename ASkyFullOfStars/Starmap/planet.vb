@@ -30,6 +30,14 @@
         star = _star
         number = _number
     End Sub
+
+
+    Public Function getCity(_number As Integer) As city
+        For Each city In cities
+            If city.number = _number Then Return city
+        Next
+        Return Nothing
+    End Function
 End Class
 
 Public Enum ePlanetType

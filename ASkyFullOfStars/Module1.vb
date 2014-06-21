@@ -1,6 +1,39 @@
 ﻿Module Module1
 
     Sub Main()
+        testCapital()
+    End Sub
+
+    Private Sub testCapital()
+        Console.WriteLine("1. Fetch")
+        Console.WriteLine("2. Generate")
+        Select Case Console.ReadLine
+            Case "1"
+
+            Case "2"
+                Dim filefetch As New filefetch
+                Dim starmap As starmap = filefetch.getStarmap
+                generateCapital(starmap)
+        End Select
+    End Sub
+    Private Sub generateCapital(_starmap As starmap)
+        Dim capital As New capital(_starmap)
+        capital.assets.Add(New asset("Imperial Bonds", capital, 999, 3))
+
+        Dim sourceCity As city = _starmap.getCity("Rhea", 7, 3)
+        sourceCity.supply.Add(eGood.ACompounds)
+        Dim destCity As city = _starmap.getCity("Rhea", 5, 5)
+        destCity.demand.Add(eGood.ACompounds)
+        capital.goods.Add(New good(eGood.ACompounds, sourceCity, destCity))
+
+        displayCapital(capital)
+    End Sub
+    Private Sub displayCapital(_capital As capital)
+        Console.WriteLine(_capital.ToString)
+        Console.ReadLine()
+    End Sub
+
+    Private Sub testStarmap()
         Console.WriteLine("1. Fetch")
         Console.WriteLine("2. Generate")
         Select Case Console.ReadLine()
@@ -13,7 +46,6 @@
                 generateStarmap()
         End Select
     End Sub
-
     Private Sub generateStarmap()
         Dim starmap As New starmap(New starmapBuilder(1))
 
@@ -22,14 +54,13 @@
         Dim filefetch As New filefetch
         filefetch.writeStarmap(starmap)
     End Sub
-
     Private Sub displayStarmap(starmap As starmap)
         For Each star In starmap.stars
             For Each planet In star.planets
                 Dim str As String = " " & planet.name & ", " & planet.type.ToString & " " & planet.government.ToString & " "
-                consoleDotline(str.Length)
+                Console.WriteLine(consoleDotline(str.Length))
                 Console.WriteLine(str)
-                consoleDotline(str.Length)
+                Console.WriteLine(consoleDotline(str.Length))
                 Console.WriteLine()
 
                 For Each city In planet.cities
@@ -43,11 +74,13 @@
         Console.WriteLine("Total Cities: " & starmap.numberOfCities)
         Console.ReadLine()
     End Sub
-    Private Sub consoleDotline(length As Integer)
-        For n = 1 To length
-            Console.Write("-")
-        Next
-        Console.Write(vbNewLine)
-    End Sub
 
+
+    Private Function consoleDotline(length As Integer) As String
+        Dim str As String = ""
+        For n = 1 To length
+            str &= "-"
+        Next
+        Return str
+    End Function
 End Module

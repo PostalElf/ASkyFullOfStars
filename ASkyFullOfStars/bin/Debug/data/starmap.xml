@@ -1,276 +1,276 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <starmap>
-  <star name="Eros">
-    <planet starname="Eros" number="1" government="3" type="5">
-      <city starname="Eros" planetnumber="1" number="1" size="2">
-        <supply type="44" />
-        <demand type="5" />
+  <star name="Aether">
+    <planet starname="Aether" number="1" government="3" type="4">
+      <city starname="Aether" planetnumber="1" number="1" size="2">
+        <supply type="34" />
+        <demand type="13" />
       </city>
-      <city starname="Eros" planetnumber="1" number="2" size="1">
-        <supply type="43" />
-        <demand type="34" />
+      <city starname="Aether" planetnumber="1" number="2" size="2">
+        <supply type="33" />
+        <demand type="44" />
       </city>
-      <city starname="Eros" planetnumber="1" number="3" size="3">
-        <supply type="43" />
+    </planet>
+    <planet starname="Aether" number="2" government="4" type="2">
+      <city starname="Aether" planetnumber="2" number="1" size="2">
+        <supply type="13" />
+        <demand type="24" />
+      </city>
+      <city starname="Aether" planetnumber="2" number="2" size="1">
+        <supply type="12" />
+        <demand type="21" />
+      </city>
+      <city starname="Aether" planetnumber="2" number="3" size="2">
+        <supply type="12" />
+        <demand type="32" />
+      </city>
+      <city starname="Aether" planetnumber="2" number="4" size="2">
+        <supply type="14" />
         <demand type="31" />
       </city>
     </planet>
-    <planet starname="Eros" number="2" government="2" type="3">
-      <city starname="Eros" planetnumber="2" number="1" size="3">
-        <supply type="22" />
-        <demand type="3" />
+    <planet starname="Aether" number="3" government="5" type="5">
+      <city starname="Aether" planetnumber="3" number="1" size="2">
+        <supply type="41" />
+        <demand type="11" />
       </city>
-      <city starname="Eros" planetnumber="2" number="2" size="1">
-        <supply type="22" />
-        <demand type="42" />
+      <city starname="Aether" planetnumber="3" number="2" size="3">
+        <supply type="44" />
+        <demand type="22" />
       </city>
-    </planet>
-    <planet starname="Eros" number="3" government="5" type="2">
-      <city starname="Eros" planetnumber="3" number="1" size="2">
-        <supply type="14" />
-        <demand type="35" />
-      </city>
-      <city starname="Eros" planetnumber="3" number="2" size="1">
-        <supply type="11" />
-        <demand type="32" />
-      </city>
-      <city starname="Eros" planetnumber="3" number="3" size="3">
-        <supply type="14" />
-        <demand type="33" />
-      </city>
-    </planet>
-  </star>
-  <star name="Helios">
-    <planet starname="Helios" number="1" government="1" type="4">
-      <city starname="Helios" planetnumber="1" number="1" size="2">
-        <supply type="35" />
-        <demand type="45" />
-      </city>
-      <city starname="Helios" planetnumber="1" number="2" size="3">
-        <supply type="34" />
-        <demand type="25" />
-      </city>
-      <city starname="Helios" planetnumber="1" number="3" size="2">
-        <supply type="31" />
+      <city starname="Aether" planetnumber="3" number="3" size="1">
+        <supply type="45" />
         <demand type="4" />
       </city>
     </planet>
-    <planet starname="Helios" number="2" government="4" type="1">
-      <city starname="Helios" planetnumber="2" number="1" size="3">
-        <supply type="3" />
-        <demand type="44" />
-      </city>
-      <city starname="Helios" planetnumber="2" number="2" size="1">
-        <supply type="5" />
+    <planet starname="Aether" number="4" government="1" type="1">
+      <city starname="Aether" planetnumber="4" number="1" size="1">
+        <supply type="4" />
         <demand type="43" />
       </city>
-      <city starname="Helios" planetnumber="2" number="3" size="2">
-        <supply type="4" />
-        <demand type="12" />
-      </city>
-    </planet>
-    <planet starname="Helios" number="3" government="4" type="2">
-      <city starname="Helios" planetnumber="3" number="1" size="3">
-        <supply type="12" />
-        <demand type="2" />
-      </city>
-      <city starname="Helios" planetnumber="3" number="2" size="2">
-        <supply type="15" />
-        <demand type="41" />
-      </city>
-      <city starname="Helios" planetnumber="3" number="3" size="2">
-        <supply type="15" />
-        <demand type="21" />
-      </city>
-      <city starname="Helios" planetnumber="3" number="4" size="2">
-        <supply type="11" />
-        <demand type="22" />
-      </city>
-    </planet>
-    <planet starname="Helios" number="4" government="2" type="3">
-      <city starname="Helios" planetnumber="4" number="1" size="2">
-        <supply type="25" />
-        <demand type="11" />
-      </city>
-      <city starname="Helios" planetnumber="4" number="2" size="3">
-        <supply type="22" />
-        <demand type="15" />
-      </city>
-      <city starname="Helios" planetnumber="4" number="3" size="2">
-        <supply type="23" />
-        <demand type="13" />
-      </city>
-      <city starname="Helios" planetnumber="4" number="4" size="2">
-        <supply type="24" />
-        <demand type="1" />
-      </city>
-    </planet>
-    <planet starname="Helios" number="5" government="1" type="5">
-      <city starname="Helios" planetnumber="5" number="1" size="2">
-        <supply type="41" />
-        <demand type="24" />
-      </city>
-      <city starname="Helios" planetnumber="5" number="2" size="1">
-        <supply type="43" />
-        <demand type="23" />
-      </city>
-      <city starname="Helios" planetnumber="5" number="3" size="2">
-        <supply type="43" />
-        <demand type="14" />
-      </city>
-      <city starname="Helios" planetnumber="5" number="4" size="1">
-        <supply type="42" />
-        <demand type="1" />
-      </city>
-      <city starname="Helios" planetnumber="5" number="5" size="3">
-        <supply type="44" />
-        <demand type="33" />
-      </city>
-    </planet>
-    <planet starname="Helios" number="6" government="3" type="1">
-      <city starname="Helios" planetnumber="6" number="1" size="2">
-        <supply type="4" />
-        <demand type="12" />
-      </city>
-      <city starname="Helios" planetnumber="6" number="2" size="3">
-        <supply type="2" />
-        <demand type="22" />
-      </city>
-    </planet>
-    <planet starname="Helios" number="7" government="5" type="4">
-      <city starname="Helios" planetnumber="7" number="1" size="3">
-        <supply type="32" />
-        <demand type="43" />
-      </city>
-      <city starname="Helios" planetnumber="7" number="2" size="2">
-        <supply type="35" />
-        <demand type="45" />
-      </city>
-      <city starname="Helios" planetnumber="7" number="3" size="2">
-        <supply type="35" />
-        <demand type="3" />
-      </city>
-      <city starname="Helios" planetnumber="7" number="4" size="1">
-        <supply type="33" />
-        <demand type="21" />
-      </city>
-      <city starname="Helios" planetnumber="7" number="5" size="1">
-        <supply type="35" />
-        <demand type="24" />
-      </city>
-    </planet>
-  </star>
-  <star name="Atlas">
-    <planet starname="Atlas" number="1" government="5" type="1">
-      <city starname="Atlas" planetnumber="1" number="1" size="2">
-        <supply type="5" />
-        <demand type="35" />
-      </city>
-      <city starname="Atlas" planetnumber="1" number="2" size="3">
-        <supply type="2" />
+      <city starname="Aether" planetnumber="4" number="2" size="2">
+        <supply type="1" />
         <demand type="34" />
       </city>
-      <city starname="Atlas" planetnumber="1" number="3" size="1">
-        <supply type="4" />
-        <demand type="25" />
-      </city>
-      <city starname="Atlas" planetnumber="1" number="4" size="2">
-        <supply type="5" />
+      <city starname="Aether" planetnumber="4" number="3" size="2">
+        <supply type="3" />
         <demand type="42" />
       </city>
     </planet>
-    <planet starname="Atlas" number="2" government="4" type="2">
-      <city starname="Atlas" planetnumber="2" number="1" size="3">
-        <supply type="12" />
+    <planet starname="Aether" number="5" government="2" type="3">
+      <city starname="Aether" planetnumber="5" number="1" size="3">
+        <supply type="25" />
+        <demand type="14" />
+      </city>
+      <city starname="Aether" planetnumber="5" number="2" size="2">
+        <supply type="24" />
+        <demand type="15" />
+      </city>
+      <city starname="Aether" planetnumber="5" number="3" size="1">
+        <supply type="22" />
+        <demand type="1" />
+      </city>
+    </planet>
+    <planet starname="Aether" number="6" government="4" type="4">
+      <city starname="Aether" planetnumber="6" number="1" size="2">
+        <supply type="35" />
+        <demand type="25" />
+      </city>
+      <city starname="Aether" planetnumber="6" number="2" size="3">
+        <supply type="35" />
+        <demand type="41" />
+      </city>
+      <city starname="Aether" planetnumber="6" number="3" size="2">
+        <supply type="31" />
+        <demand type="3" />
+      </city>
+      <city starname="Aether" planetnumber="6" number="4" size="2">
+        <supply type="35" />
+        <demand type="45" />
+      </city>
+      <city starname="Aether" planetnumber="6" number="5" size="1">
+        <supply type="32" />
+        <demand type="2" />
+      </city>
+    </planet>
+    <planet starname="Aether" number="7" government="5" type="1">
+      <city starname="Aether" planetnumber="7" number="1" size="3">
+        <supply type="3" />
+        <demand type="33" />
+      </city>
+      <city starname="Aether" planetnumber="7" number="2" size="3">
+        <supply type="4" />
+        <demand type="23" />
+      </city>
+    </planet>
+  </star>
+  <star name="Lelantos">
+    <planet starname="Lelantos" number="1" government="2" type="3">
+      <city starname="Lelantos" planetnumber="1" number="1" size="3">
+        <supply type="21" />
         <demand type="5" />
       </city>
-      <city starname="Atlas" planetnumber="2" number="2" size="2">
+      <city starname="Lelantos" planetnumber="1" number="2" size="1">
+        <supply type="23" />
+        <demand type="35" />
+      </city>
+      <city starname="Lelantos" planetnumber="1" number="3" size="2">
+        <supply type="23" />
+        <demand type="12" />
+      </city>
+      <city starname="Lelantos" planetnumber="1" number="4" size="1">
+        <supply type="22" />
+        <demand type="3" />
+      </city>
+    </planet>
+    <planet starname="Lelantos" number="2" government="3" type="5">
+      <city starname="Lelantos" planetnumber="2" number="1" size="2">
+        <supply type="44" />
+        <demand type="13" />
+      </city>
+      <city starname="Lelantos" planetnumber="2" number="2" size="2">
+        <supply type="44" />
+        <demand type="23" />
+      </city>
+      <city starname="Lelantos" planetnumber="2" number="3" size="2">
+        <supply type="42" />
+        <demand type="21" />
+      </city>
+    </planet>
+    <planet starname="Lelantos" number="3" government="1" type="2">
+      <city starname="Lelantos" planetnumber="3" number="1" size="2">
+        <supply type="12" />
+        <demand type="33" />
+      </city>
+      <city starname="Lelantos" planetnumber="3" number="2" size="2">
+        <supply type="15" />
+        <demand type="2" />
+      </city>
+      <city starname="Lelantos" planetnumber="3" number="3" size="2">
+        <supply type="15" />
+        <demand type="34" />
+      </city>
+      <city starname="Lelantos" planetnumber="3" number="4" size="1">
         <supply type="13" />
         <demand type="41" />
       </city>
-      <city starname="Atlas" planetnumber="2" number="3" size="1">
-        <supply type="11" />
-        <demand type="31" />
-      </city>
-      <city starname="Atlas" planetnumber="2" number="4" size="3">
+      <city starname="Lelantos" planetnumber="3" number="5" size="3">
         <supply type="15" />
-        <demand type="44" />
-      </city>
-      <city starname="Atlas" planetnumber="2" number="5" size="1">
-        <supply type="14" />
-        <demand type="23" />
+        <demand type="22" />
       </city>
     </planet>
-    <planet starname="Atlas" number="3" government="1" type="3">
-      <city starname="Atlas" planetnumber="3" number="1" size="2">
-        <supply type="21" />
-        <demand type="4" />
+    <planet starname="Lelantos" number="4" government="3" type="2">
+      <city starname="Lelantos" planetnumber="4" number="1" size="1">
+        <supply type="15" />
+        <demand type="43" />
       </city>
-      <city starname="Atlas" planetnumber="3" number="2" size="2">
-        <supply type="23" />
-        <demand type="2" />
+      <city starname="Lelantos" planetnumber="4" number="2" size="3">
+        <supply type="12" />
+        <demand type="31" />
       </city>
     </planet>
   </star>
-  <star name="Aether">
-    <planet starname="Aether" number="1" government="2" type="4">
-      <city starname="Aether" planetnumber="1" number="1" size="3">
-        <supply type="31" />
-        <demand type="13" />
+  <star name="Rhea">
+    <planet starname="Rhea" number="1" government="1" type="5">
+      <city starname="Rhea" planetnumber="1" number="1" size="1">
+        <supply type="44" />
+        <demand type="35" />
       </city>
-      <city starname="Aether" planetnumber="1" number="2" size="1">
-        <supply type="31" />
-        <demand type="14" />
-      </city>
-      <city starname="Aether" planetnumber="1" number="3" size="3">
-        <supply type="34" />
-        <demand type="11" />
-      </city>
-      <city starname="Aether" planetnumber="1" number="4" size="2">
-        <supply type="32" />
-        <demand type="15" />
-      </city>
-      <city starname="Aether" planetnumber="1" number="5" size="1">
-        <supply type="31" />
+      <city starname="Rhea" planetnumber="1" number="2" size="3">
+        <supply type="45" />
         <demand type="24" />
       </city>
     </planet>
-    <planet starname="Aether" number="2" government="3" type="5">
-      <city starname="Aether" planetnumber="2" number="1" size="3">
-        <supply type="42" />
-        <demand type="3" />
-      </city>
-      <city starname="Aether" planetnumber="2" number="2" size="1">
-        <supply type="42" />
+    <planet starname="Rhea" number="2" government="4" type="1">
+      <city starname="Rhea" planetnumber="2" number="1" size="3">
+        <supply type="2" />
         <demand type="14" />
       </city>
-      <city starname="Aether" planetnumber="2" number="3" size="1">
-        <supply type="42" />
+      <city starname="Rhea" planetnumber="2" number="2" size="2">
+        <supply type="3" />
+        <demand type="32" />
+      </city>
+      <city starname="Rhea" planetnumber="2" number="3" size="2">
+        <supply type="1" />
         <demand type="11" />
       </city>
     </planet>
-    <planet starname="Aether" number="3" government="1" type="1">
-      <city starname="Aether" planetnumber="3" number="1" size="2">
-        <supply type="5" />
-        <demand type="35" />
+    <planet starname="Rhea" number="3" government="2" type="4">
+      <city starname="Rhea" planetnumber="3" number="1" size="2">
+        <supply type="35" />
+        <demand type="42" />
       </city>
-      <city starname="Aether" planetnumber="3" number="2" size="3">
-        <supply type="5" />
-        <demand type="13" />
+      <city starname="Rhea" planetnumber="3" number="2" size="2">
+        <supply type="34" />
+        <demand type="12" />
       </city>
     </planet>
-    <planet starname="Aether" number="4" government="5" type="5">
-      <city starname="Aether" planetnumber="4" number="1" size="3">
-        <supply type="43" />
-        <demand type="23" />
-      </city>
-      <city starname="Aether" planetnumber="4" number="2" size="2">
-        <supply type="42" />
-        <demand type="22" />
-      </city>
-      <city starname="Aether" planetnumber="4" number="3" size="2">
-        <supply type="41" />
+    <planet starname="Rhea" number="4" government="5" type="3">
+      <city starname="Rhea" planetnumber="4" number="1" size="1">
+        <supply type="21" />
         <demand type="5" />
+      </city>
+      <city starname="Rhea" planetnumber="4" number="2" size="2">
+        <supply type="23" />
+        <demand type="15" />
+      </city>
+      <city starname="Rhea" planetnumber="4" number="3" size="2">
+        <supply type="21" />
+        <demand type="45" />
+      </city>
+    </planet>
+    <planet starname="Rhea" number="5" government="1" type="1">
+      <city starname="Rhea" planetnumber="5" number="1" size="1">
+        <supply type="1" />
+        <demand type="25" />
+      </city>
+      <city starname="Rhea" planetnumber="5" number="2" size="2">
+        <supply type="4" />
+        <demand type="44" />
+      </city>
+      <city starname="Rhea" planetnumber="5" number="3" size="2">
+        <supply type="2" />
+        <demand type="43" />
+      </city>
+      <city starname="Rhea" planetnumber="5" number="4" size="3">
+        <supply type="1" />
+        <demand type="42" />
+      </city>
+      <city starname="Rhea" planetnumber="5" number="5" size="2">
+        <supply type="2" />
+        <demand type="45" />
+      </city>
+    </planet>
+    <planet starname="Rhea" number="6" government="5" type="2">
+      <city starname="Rhea" planetnumber="6" number="1" size="2">
+        <supply type="12" />
+        <demand type="41" />
+      </city>
+      <city starname="Rhea" planetnumber="6" number="2" size="2">
+        <supply type="12" />
+        <demand type="5" />
+      </city>
+      <city starname="Rhea" planetnumber="6" number="3" size="2">
+        <supply type="15" />
+        <demand type="4" />
+      </city>
+      <city starname="Rhea" planetnumber="6" number="4" size="1">
+        <supply type="15" />
+        <demand type="34" />
+      </city>
+    </planet>
+    <planet starname="Rhea" number="7" government="3" type="5">
+      <city starname="Rhea" planetnumber="7" number="1" size="2">
+        <supply type="43" />
+        <demand type="24" />
+      </city>
+      <city starname="Rhea" planetnumber="7" number="2" size="2">
+        <supply type="42" />
+        <demand type="12" />
+      </city>
+      <city starname="Rhea" planetnumber="7" number="3" size="3">
+        <supply type="41" />
+        <demand type="25" />
       </city>
     </planet>
   </star>

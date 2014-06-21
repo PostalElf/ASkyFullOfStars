@@ -4,10 +4,12 @@
     Public Property destination As location
 
     Public Overrides Function ToString() As String
-        Return type.ToString
+        Return "(" & good.goodType2String(type) & ") " & source.name & " -> " & destination.name
     End Function
     Public Sub New(_type As eGood, _source As location, _destination As location)
         type = _type
+        source = _source
+        destination = _destination
     End Sub
 
     Public Shared Function goodType2String(_type As eGood) As String

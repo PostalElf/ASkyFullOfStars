@@ -36,5 +36,11 @@
         Next
         Return Nothing
     End Function
+    Public Function getPlanet(starName As String, planetNumber As Integer) As planet
+        Return getStar(starName).getPlanet(planetNumber)
+    End Function
+    Public Function getCity(starName As String, planetNumber As Integer, cityNumber As Integer) As city
+        Return getStar(starName).getPlanet(planetNumber).getCity(cityNumber)
+    End Function
 End Class
 
