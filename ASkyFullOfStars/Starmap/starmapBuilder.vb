@@ -81,6 +81,7 @@ Public Class starmapBuilder
 
 
     Private Property demandList As New List(Of eGood)
+    Private Property citySizeList As New List(Of Integer)
     Public Function rndSupply(_type As ePlanetType, ByRef _city As location) As eGood
         Dim roll As Integer = Int(Rnd() * 5 + 1)
         Select Case _type
@@ -128,4 +129,27 @@ Public Class starmapBuilder
         End Select
         Return templist
     End Function
+    Public Function rndCitySize() As Integer
+        'sizelist is also repopulated when a new planet is created
+        'size determines max supply and demand (each)
+
+        If citySizeList.Count = 0 Then popCitySizeList()
+
+        Dim roll As Integer = rng.Next(citySizeList.Count)
+        rndCitySize = citySizeList.Item(roll)
+        citySizeList.RemoveAt(roll)
+    End Function
+    Public Sub popCitySizeList()
+        citySizeList.Clear()
+
+        For n = 1 To 2
+            citySizeList.Add(1)
+        Next
+        For n = 1 To 5
+            citySizeList.Add(2)
+        Next
+        For n = 1 To 2
+            citySizeList.Add(3)
+        Next
+    End Sub
 End Class

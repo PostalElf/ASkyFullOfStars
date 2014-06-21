@@ -1,9 +1,9 @@
 ﻿Public Class planet
     Public Property star As star
-    Public Property type As ePlanetType
-    Public Property government As eGovernment
-    Public Property cities As New List(Of city)
     Public Property number As Integer
+    Public Property government As eGovernment
+    Public Property type As ePlanetType
+    Public Property cities As New List(Of city)
     Public ReadOnly Property name As String
         Get
             Return star.name & " " & romanNumverter(number)
@@ -22,6 +22,9 @@
         For n = 1 To starmapBuilder.numCities.roll
             cities.Add(New city(starmapBuilder, Me, n))
         Next
+
+        'repopulate citysizeList because it's a new planet
+        starmapBuilder.popCitySizeList()
     End Sub
     Public Sub New(_star As star, _number As Integer)
         star = _star

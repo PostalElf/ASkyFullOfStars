@@ -11,16 +11,7 @@
 
             Case "2"
                 generateStarmap()
-            Case Else
-                End
         End Select
-    End Sub
-
-    Private Sub consoleDotline(length As Integer)
-        For n = 1 To length
-            Console.Write("-")
-        Next
-        Console.Write(vbNewLine)
     End Sub
 
     Private Sub generateStarmap()
@@ -51,6 +42,12 @@
         Console.WriteLine("Total Planets: " & starmap.numberOfPlanets)
         Console.WriteLine("Total Cities: " & starmap.numberOfCities)
         Console.ReadLine()
+    End Sub
+    Private Sub consoleDotline(length As Integer)
+        For n = 1 To length
+            Console.Write("-")
+        Next
+        Console.Write(vbNewLine)
     End Sub
 
 End Module

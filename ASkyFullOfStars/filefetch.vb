@@ -33,6 +33,7 @@ Public Class filefetch
                             Dim starname As String = reader.GetAttribute(0)
                             Dim planetnumber As Integer = reader.GetAttribute(1)
                             Dim city As New city(currentPlanet, reader.GetAttribute(2))
+                            city.size = reader.GetAttribute(3)
                             currentPlanet.cities.Add(city)
                             currentCity = city
 
@@ -83,6 +84,8 @@ Public Class filefetch
                         writer.WriteString(city.planet.number)
                         writer.WriteStartAttribute("number")
                         writer.WriteString(city.number)
+                        writer.WriteStartAttribute("size")
+                        writer.WriteString(city.size)
                         writer.WriteEndAttribute()
 
                         For Each supply In city.supply
