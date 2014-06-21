@@ -29,12 +29,14 @@
 
 
         'asset test
-        destCity.assets.Add(New asset("Ouroboros Construction", destCity, 3, -0.3))
+        destCity.assets.add(New asset("Ouroboros Construction", destCity, 3, -0.3))
 
         For n = 1 To 5
             Console.Clear()
             Console.WriteLine("Turn " & n)
             Console.WriteLine(capital.ToString)
+            Console.WriteLine()
+            Console.WriteLine(sourceCity.ToString)
             Console.WriteLine()
             Console.WriteLine(destCity.ToString)
             Console.ReadLine()

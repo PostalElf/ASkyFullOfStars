@@ -90,6 +90,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Resources\asset.vb" />
+    <Compile Include="Resources\assets.vb" />
     <Compile Include="Resources\good.vb" />
     <Compile Include="Starmap\Base Classes\location.vb" />
     <Compile Include="Starmap\capital.vb" />

@@ -16,7 +16,7 @@
             For Each star In starmap.stars
                 For Each planet In star.planets
                     For Each city In planet.cities
-                        assetTotal += city.assetIncome
+                        assetTotal += city.assets.income
                         goodsTotal += countMatchingGoods(city) * 2
                     Next
                 Next

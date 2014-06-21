@@ -18,32 +18,20 @@
         End Get
     End Property
     Public Property size As Integer
+    Public Property assets As New assets(Me)
     Public Property supply As New List(Of eGood)
     Public Property demand As New List(Of eGood)
-    Public Property assets As New List(Of asset)
-    Public Property newAssets As New List(Of asset)
-    Public ReadOnly Property assetIncome As Decimal
-        Get
-            Dim total As Decimal = 0
-            For Each asset In assets
-                total += asset.income
-            Next
-            Return total
-        End Get
-    End Property
 
     Public Overrides Function ToString() As String
         Dim str As String = name & vbNewLine
 
         str &= vbSpace & "Size: " & size & vbNewLine
+        str &= assets.ToString
         For Each item In supply
             str &= vbSpace & "Supply: " & good.goodType2String(item) & vbNewLine
         Next
         For Each item In demand
             str &= vbSpace & "Demand: " & good.goodType2String(item) & vbNewLine
-        Next
-        For Each item In assets
-            str &= vbSpace & "Asset: " & item.ToString & vbNewLine
         Next
 
         'agents are not read from XML at starmap level
@@ -68,16 +56,7 @@
     Public Function tick() As List(Of report)
         Dim replist As New List(Of report)
 
-        'tick assets and remove all whose ttl = 0
-        'note that constructing assets are unfolded within asset.tick and added to newAssets
-        'but asset addition and removal must take place outside of asset
-        For Each asset In assets
-            Dim report As report = asset.tick()
-            If report Is Nothing = False Then replist.Add(report)
-        Next
-        assets.AddRange(newAssets)
-        newAssets.Clear()
-        assets.RemoveAll(Function(a) a.ttl <= 0)
+        replist.AddRange(assets.tick)
 
         Return replist
     End Function
