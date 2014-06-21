@@ -17,7 +17,7 @@ Public Class filefetch
                     Select Case reader.Name
                         Case "star"
                             Dim star As New star(starmap)
-                            star.name = reader.GetAttribute(0)
+                            star.starname = reader.GetAttribute(0)
                             starmap.stars.Add(star)
                             currentStar = star
 

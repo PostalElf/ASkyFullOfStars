@@ -15,4 +15,22 @@
         ttl = _ttl
         income = _income
     End Sub
+
+    Public Function tick() As report
+        If ttl <> 999 Then ttl -= 1
+        If ttl <= 0 Then
+            'KEYPOINT: run whatever checks need to be done based on special asset names
+            Select Case name
+                Case "Ouroboros Construction"
+                    Dim city As city = CType(location, city)
+                    city.assets.Add(New asset("Ouroboros", city, 999, -0.1))
+                    Return New report
+
+                Case Else
+                    Return New report
+            End Select
+        End If
+
+        Return Nothing
+    End Function
 End Class

@@ -1,14 +1,20 @@
 ﻿Public Class star
+    Inherits location
     Public Property starmap As starmap
     Public Property planets As New List(Of planet)
-    Public Property name As String
+    Public Property starname As String
+    Public Overrides ReadOnly Property name As String
+        Get
+            Return starname
+        End Get
+    End Property
 
     Public Overrides Function ToString() As String
         Return name & " (Planets: " & planets.Count & ")"
     End Function
     Public Sub New(ByRef starmapBuilder As starmapBuilder, ByRef _starmap As starmap)
         starmap = _starmap
-        name = starmapBuilder.rndStarname()
+        starname = starmapBuilder.rndStarname()
 
         For n = 1 To starmapBuilder.numPlanets.roll
             planets.Add(New planet(starmapBuilder, Me, n))

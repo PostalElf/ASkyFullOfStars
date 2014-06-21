@@ -64,13 +64,15 @@
     End Sub
 
 
-    Public Function tick() As report
-        'TTL -= 1 and remove all whose TTL <= 0
+    Public Function tick() As List(Of report)
+        Dim replist As New List(Of report)
+
         For Each asset In assets
-            If asset.ttl <> 999 Then asset.ttl -= 1
+            Dim report As report = asset.tick()
+            If report Is Nothing = False Then replist.Add(report)
         Next
         assets.RemoveAll(Function(a) a.ttl <= 0)
 
-        Return Nothing
+        Return replist
     End Function
 End Class

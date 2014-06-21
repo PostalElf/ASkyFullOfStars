@@ -1,10 +1,11 @@
 ﻿Public Class planet
+    Inherits location
     Public Property star As star
     Public Property number As Integer
     Public Property government As eGovernment
     Public Property type As ePlanetType
     Public Property cities As New List(Of city)
-    Public ReadOnly Property name As String
+    Public Overrides ReadOnly Property name As String
         Get
             Return star.name & " " & romanNumverter(number)
         End Get
