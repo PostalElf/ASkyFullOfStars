@@ -28,7 +28,7 @@
             Return assetTotal + goodsTotal
         End Get
     End Property
-    Public Property location As planet
+    Public Property orbiting As location = Nothing
 
     Public Overrides Function ToString() As String
         Dim str As String = ""
@@ -66,7 +66,7 @@
 
 
 #Region "travel"
-    Public Property travelSpeed As Decimal = 50
+    Public Property travelSpeed As Decimal = 100
     Private Property origin As planet = Nothing
     Private Property destination As planet = Nothing
     Public Property travelTTL As Integer = 0
@@ -74,6 +74,8 @@
     Public Function travelTo(_origin As planet, _destination As planet) As report
         origin = _origin
         destination = _destination
+        orbiting = starmap.limbo
+
         Dim travelDistance As Integer = origin.star.starXY.distanceTo(destination.star.starXY)
         travelTTL = constrain(Math.Ceiling(travelDistance / travelSpeed), 1)
 
@@ -85,13 +87,15 @@
     Public Function tick() As List(Of report)
         Dim replist As New List(Of report)
 
-        travelTTL -= 1
-        If travelTTL <= 0 Then
-            replist.Add(New report())
-            travelTTL = 0
-            location = destination
-            origin = Nothing
-            destination = Nothing
+        If travelTTL > 0 Then
+            travelTTL -= 1
+            If travelTTL <= 0 Then
+                replist.Add(New report())
+                travelTTL = 0
+                orbiting = destination
+                origin = Nothing
+                destination = Nothing
+            End If
         End If
 
         Return replist

@@ -1,5 +1,6 @@
 ﻿Public Class starmap
     Public Property stars As New List(Of star)
+    Public Property limbo As New limbo
     Public ReadOnly Property numberOfPlanets
         Get
             Dim total As Integer = 0

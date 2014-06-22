@@ -91,10 +91,11 @@
     </Compile>
     <Compile Include="Resources\asset.vb" />
     <Compile Include="Resources\assets.vb" />
-    <Compile Include="Resources\good.vb" />
+    <Compile Include="Capital\good.vb" />
+    <Compile Include="Starmap\Base Classes\limbo.vb" />
     <Compile Include="Starmap\Base Classes\location.vb" />
     <Compile Include="Starmap\Base Classes\xy.vb" />
-    <Compile Include="Starmap\capital.vb" />
+    <Compile Include="Capital\capital.vb" />
     <Compile Include="Starmap\city.vb" />
     <Compile Include="Starmap\planet.vb" />
     <Compile Include="Starmap\star.vb" />

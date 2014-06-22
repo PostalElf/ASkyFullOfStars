@@ -128,12 +128,18 @@
 
         Dim dest As planet = starmap.getPlanet(lastStarname, 1)
         Dim origin As planet = starmap.getPlanet(dubbStarname, 2)
+        capital.orbiting = origin
         Console.WriteLine("From " & origin.name & " (" & origin.star.starXY.ToString & ") to " & dest.name & " (" & dest.star.starXY.ToString & ")")
         Console.WriteLine("Travel Distance: " & origin.star.starXY.distanceTo(dest.star.starXY))
         Console.WriteLine("Travel Speed: " & capital.travelSpeed)
 
         capital.travelTo(origin, dest)
-        Console.WriteLine(capital.travelTTL)
+
+        For n = 1 To 10
+            Console.WriteLine("Turns Remaining: " & capital.travelTTL)
+            Console.WriteLine("Current Location: " & capital.orbiting.name)
+            capital.tick()
+        Next
 
         Console.ReadLine()
     End Sub
