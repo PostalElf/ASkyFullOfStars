@@ -1,7 +1,12 @@
 ﻿Module Module1
 
     Sub Main()
-        testCapital()
+        Console.WriteLine("1. Starmap")
+        Console.WriteLine("2. Capital")
+        Select Case Console.ReadLine
+            Case "1" : testStarmap()
+            Case "2" : testCapital()
+        End Select
     End Sub
 
     Private Sub testCapital()
@@ -9,6 +14,11 @@
         Console.WriteLine("2. Generate")
         Select Case Console.ReadLine
             Case "1"
+                Dim filefetch As New filefetch
+                Dim starmap As starmap = filefetch.getStarmap
+                Dim capital As capital = filefetch.getCapital(starmap)
+                Console.WriteLine(capital.ToString)
+                Console.ReadLine()
 
             Case "2"
                 Dim filefetch As New filefetch
@@ -21,9 +31,9 @@
         capital.assets.Add(New asset("Imperial Bonds", capital, 999, 3))
 
         'good test
-        Dim sourceCity As city = _starmap.getCity("Rhea", 7, 3)
+        Dim sourceCity As city = _starmap.getCity("Pontus", 7, 1)
         sourceCity.supply.Add(eGood.ACompounds)
-        Dim destCity As city = _starmap.getCity("Rhea", 5, 5)
+        Dim destCity As city = _starmap.getCity("Pontus", 7, 2)
         destCity.demand.Add(eGood.ACompounds)
         capital.goods.Add(New good(eGood.ACompounds, sourceCity, destCity))
 
@@ -31,6 +41,8 @@
         'asset test
         destCity.assets.add(New asset("Ouroboros Construction", destCity, 3, -0.3))
 
+
+        'asset tick/TTL test
         For n = 1 To 5
             Console.Clear()
             Console.WriteLine("Turn " & n)
@@ -41,8 +53,14 @@
             Console.WriteLine(destCity.ToString)
             Console.ReadLine()
 
-            destCity.tick()
+            capital.starmap.tick()
         Next
+
+
+        'save changes
+        Dim filefetch As New filefetch
+        filefetch.writeStarmap(_starmap)
+        filefetch.writeCapital(capital)
     End Sub
 
 
@@ -69,6 +87,7 @@
     End Sub
     Private Sub displayStarmap(starmap As starmap)
         For Each star In starmap.stars
+            Console.WriteLine(vbTab & vbTab & star.name & " (" & star.starXY.ToString & ")")
             For Each planet In star.planets
                 Dim str As String = " " & planet.name & ", " & planet.type.ToString & " " & planet.government.ToString & " "
                 Console.WriteLine(consoleDotline(str.Length))

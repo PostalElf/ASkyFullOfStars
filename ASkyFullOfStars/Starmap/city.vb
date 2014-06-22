@@ -7,6 +7,11 @@
             Return planet.name & "-" & alphaNumverter(number)
         End Get
     End Property
+    Public ReadOnly Property id As String
+        Get
+            Return planet.star.name & " " & planet.number & " " & number
+        End Get
+    End Property
     Public ReadOnly Property government
         Get
             Return planet.government

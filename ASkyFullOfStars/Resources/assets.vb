@@ -9,7 +9,7 @@
             Return total
         End Get
     End Property
-    Private Property assetList As New List(Of asset)
+    Public Property assetList As New List(Of asset)
     Private Property newAssetList As New List(Of asset)
 
     Public Overrides Function ToString() As String

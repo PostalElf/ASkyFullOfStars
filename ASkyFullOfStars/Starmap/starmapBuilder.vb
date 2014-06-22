@@ -13,7 +13,7 @@ Public Class starmapBuilder
 
 
     Public Property numPlanets As New range(3, 7)
-    Private Const pathStarnamelist As String = "starnames.txt"
+    Private Const pathStarnamelist As String = "resources/starnames.txt"
     Private Property starnameList As List(Of String) = filegetStarname()
     Public Function rndStarname() As String
         Dim roll As Integer = rng.Next(starnameList.Count)
@@ -40,6 +40,25 @@ Public Class starmapBuilder
 
         Return starnameList
     End Function
+    Private Property starXYList() As New List(Of xy)
+    Public Function rndStarXY() As xy
+        If starXYList.Count = 0 Then popStarXYList()
+
+        Dim roll As Integer = rng.Next(starXYList.Count)
+        rndStarXY = starXYList.Item(roll)
+        starXYList.RemoveAt(roll)
+    End Function
+    Private Sub popStarXYList()
+        starXYList.Clear()
+
+        For x = 1 To 10
+            For y = 1 To 10
+                Dim realX As Integer = (x * 100) + rng.Next(100)
+                Dim realY As Integer = (y * 100) + rng.Next(100)
+                starXYList.Add(New xy(realX, realY))
+            Next
+        Next
+    End Sub
 
 
     Public Property numCities As New range(2, 5)

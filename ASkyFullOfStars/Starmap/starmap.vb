@@ -42,5 +42,23 @@
     Public Function getCity(starName As String, planetNumber As Integer, cityNumber As Integer) As city
         Return getStar(starName).getPlanet(planetNumber).getCity(cityNumber)
     End Function
+    Public Function getCity(id As String) As city
+        Dim splitString() As String = Split(id)
+        Dim starName As String = splitString(0)
+        Dim planetNumber As Integer = CInt(splitString(1))
+        Dim cityNumber As Integer = CInt(splitString(2))
+        Return getCity(starName, planetNumber, cityNumber)
+    End Function
+
+
+    Public Function tick() As List(Of report)
+        Dim replist As New List(Of report)
+
+        For Each star In stars
+            replist.AddRange(star.tick())
+        Next
+
+        Return replist
+    End Function
 End Class
 

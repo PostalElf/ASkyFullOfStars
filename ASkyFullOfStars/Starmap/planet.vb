@@ -1,15 +1,16 @@
 ﻿Public Class planet
     Inherits location
-    Public Property star As star
-    Public Property number As Integer
-    Public Property government As eGovernment
-    Public Property type As ePlanetType
-    Public Property cities As New List(Of city)
     Public Overrides ReadOnly Property name As String
         Get
             Return star.name & " " & romanNumverter(number)
         End Get
     End Property
+    Public Property assets As New assets(Me)
+    Public Property star As star
+    Public Property number As Integer
+    Public Property government As eGovernment
+    Public Property type As ePlanetType
+    Public Property cities As New List(Of city)
 
     Public Overrides Function ToString() As String
         Return name & " (Cities: " & cities.Count & ")"
@@ -38,6 +39,19 @@
             If city.number = _number Then Return city
         Next
         Return Nothing
+    End Function
+
+
+    Public Function tick() As List(Of report)
+        Dim replist As New List(Of report)
+
+        For Each city In cities
+            replist.AddRange(city.tick)
+        Next
+
+        replist.AddRange(assets.tick)
+
+        Return replist
     End Function
 End Class
 

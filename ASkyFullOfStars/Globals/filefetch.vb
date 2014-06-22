@@ -3,6 +3,7 @@
 Public Class filefetch
     Private Const filePath As String = "data\"
     Private Const starmapFilename As String = "starmap.xml"
+    Private Const capitalFilename As String = "capital.xml"
 
     Public Function getStarmap() As starmap
         Dim xmlSettings As New XmlReaderSettings
@@ -18,6 +19,8 @@ Public Class filefetch
                         Case "star"
                             Dim star As New star(starmap)
                             star.starname = reader.GetAttribute(0)
+                            Dim splitString() As String = Split(reader.GetAttribute(1))
+                            star.starXY = New xy(splitString(0), splitString(1))
                             starmap.stars.Add(star)
                             currentStar = star
 
@@ -28,6 +31,12 @@ Public Class filefetch
                             planet.type = reader.GetAttribute(3)
                             currentStar.planets.Add(planet)
                             currentPlanet = planet
+
+                        Case "planetAsset"
+                            Dim assetName As String = reader.GetAttribute(0)
+                            Dim assetIncome As Decimal = reader.GetAttribute(1)
+                            Dim assetTTL As Integer = reader.GetAttribute(2)
+                            currentPlanet.assets.add(New asset(assetName, currentPlanet, assetTTL, assetIncome))
 
                         Case "city"
                             Dim starname As String = reader.GetAttribute(0)
@@ -42,6 +51,13 @@ Public Class filefetch
 
                         Case "demand"
                             currentCity.demand.Add(reader.GetAttribute(0))
+
+                        Case "cityAsset"
+                            Dim assetName As String = reader.GetAttribute(0)
+                            Dim assetIncome As Decimal = reader.GetAttribute(1)
+                            Dim assetTTL As Integer = reader.GetAttribute(2)
+                            currentCity.assets.add(New asset(assetName, currentPlanet, assetTTL, assetIncome))
+
                     End Select
                 End If
             End While
@@ -49,7 +65,6 @@ Public Class filefetch
 
         Return starmap
     End Function
-
     Public Sub writeStarmap(ByRef starmap As starmap)
         Dim xmlSettings As New XmlWriterSettings
         xmlSettings.Indent = True
@@ -62,6 +77,8 @@ Public Class filefetch
                 writer.WriteStartElement("star")
                 writer.WriteStartAttribute("name")
                 writer.WriteString(star.name)
+                writer.WriteStartAttribute("xy")
+                writer.WriteString(star.starXY.x & " " & star.starXY.y)
                 writer.WriteEndAttribute()
 
                 For Each planet In star.planets
@@ -75,6 +92,18 @@ Public Class filefetch
                     writer.WriteStartAttribute("type")
                     writer.WriteString(planet.type)
                     writer.WriteEndAttribute()
+
+                    For Each asset In planet.assets.assetList
+                        writer.WriteStartElement("planetAsset")
+                        writer.WriteStartAttribute("name")
+                        writer.WriteString(asset.name)
+                        writer.WriteStartAttribute("income")
+                        writer.WriteString(asset.income)
+                        writer.WriteStartAttribute("ttl")
+                        writer.WriteString(asset.ttl)
+                        writer.WriteEndAttribute()
+                        writer.WriteEndElement()
+                    Next
 
                     For Each city In planet.cities
                         writer.WriteStartElement("city")
@@ -104,6 +133,18 @@ Public Class filefetch
                             writer.WriteEndElement()
                         Next
 
+                        For Each asset In city.assets.assetList
+                            writer.WriteStartElement("cityAsset")
+                            writer.WriteStartAttribute("name")
+                            writer.WriteString(asset.name)
+                            writer.WriteStartAttribute("income")
+                            writer.WriteString(asset.income)
+                            writer.WriteStartAttribute("ttl")
+                            writer.WriteString(asset.ttl)
+                            writer.WriteEndAttribute()
+                            writer.WriteEndElement()
+                        Next
+
                         writer.WriteEndElement()        'closes city
                     Next
 
@@ -118,4 +159,69 @@ Public Class filefetch
         End Using
     End Sub
 
+    Public Function getCapital(starmap As starmap) As capital
+        Dim xmlSettings As New XmlReaderSettings
+        Dim capital As New capital(starmap)
+
+        Using reader As XmlReader = XmlReader.Create(filePath & capitalFilename, xmlSettings)
+            While reader.Read()
+                If reader.IsStartElement = True Then
+                    Select Case reader.Name
+                        Case "good"
+                            Dim type As eGood = reader.GetAttribute(0)
+                            Dim source As city = starmap.getCity(reader.GetAttribute(1))
+                            Dim dest As city = starmap.getCity(reader.GetAttribute(2))
+                            capital.goods.Add(New good(type, source, dest))
+
+                        Case "asset"
+                            Dim assetName As String = reader.GetAttribute(0)
+                            Dim assetIncome As Decimal = reader.GetAttribute(1)
+                            Dim assetTTL As Integer = reader.GetAttribute(2)
+                            capital.assets.Add(New asset(assetName, capital, assetTTL, assetIncome))
+
+                    End Select
+                End If
+            End While
+        End Using
+
+        Return capital
+    End Function
+    Public Sub writeCapital(ByRef capital As capital)
+        Dim xmlSettings As New XmlWriterSettings
+        xmlSettings.Indent = True
+
+        Using writer As XmlWriter = XmlWriter.Create(filePath & capitalFilename, xmlSettings)
+            writer.WriteStartDocument()
+            writer.WriteStartElement("capital")     'root
+
+            For Each good In capital.goods
+                writer.WriteStartElement("good")
+                writer.WriteStartAttribute("type")
+                writer.WriteString(good.type)
+                writer.WriteStartAttribute("source")
+                Dim source As city = CType(good.source, city)
+                writer.WriteString(source.id)
+                writer.WriteStartAttribute("destination")
+                Dim dest As city = CType(good.destination, city)
+                writer.WriteString(dest.id)
+                writer.WriteEndAttribute()
+                writer.WriteEndElement()
+            Next
+
+            For Each asset In capital.assets
+                writer.WriteStartElement("asset")
+                writer.WriteStartAttribute("name")
+                writer.WriteString(asset.name)
+                writer.WriteStartAttribute("income")
+                writer.WriteString(asset.income)
+                writer.WriteStartAttribute("ttl")
+                writer.WriteString(asset.ttl)
+                writer.WriteEndAttribute()
+                writer.WriteEndElement()
+            Next
+
+            writer.WriteEndElement()              'closes root
+            writer.WriteEndDocument()
+        End Using
+    End Sub
 End Class

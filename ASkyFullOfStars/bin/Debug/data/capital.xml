@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<capital>
+  <good type="33" source="Pontus 7 1" destination="Pontus 7 2" />
+  <asset name="Imperial Bonds" income="3" ttl="999" />
+</capital>

@@ -93,6 +93,7 @@
     <Compile Include="Resources\assets.vb" />
     <Compile Include="Resources\good.vb" />
     <Compile Include="Starmap\Base Classes\location.vb" />
+    <Compile Include="Starmap\Base Classes\xy.vb" />
     <Compile Include="Starmap\capital.vb" />
     <Compile Include="Starmap\city.vb" />
     <Compile Include="Starmap\planet.vb" />

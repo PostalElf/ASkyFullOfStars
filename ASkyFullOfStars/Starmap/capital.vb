@@ -6,7 +6,6 @@
             Return "Capital Ship"
         End Get
     End Property
-    Public Property goods As New List(Of good)          'holds all goods that are in the supply chain
     Public Property assets As New List(Of asset)
     Public ReadOnly Property income As Decimal
         Get
@@ -29,6 +28,7 @@
             Return assetTotal + goodsTotal
         End Get
     End Property
+    Public Property location As planet
 
     Public Overrides Function ToString() As String
         Dim str As String = ""
@@ -50,7 +50,8 @@
         starmap = _starmap
     End Sub
 
-
+#Region "goods"
+    Public Property goods As New List(Of good)          'holds all goods that are in the supply chain
     Private Function countMatchingGoods(city As city) As Integer
         'count the number of goods that match a given city
         'if a good's destination is X, X must have demand
@@ -60,5 +61,36 @@
             If good.destination Is Nothing = False AndAlso good.destination.Equals(city) Then total += 1
         Next
         Return total
+    End Function
+#End Region
+
+
+#Region "travel"
+    Public Property origin As planet = Nothing
+    Public Property destination As planet = Nothing
+    Public Property travelTTL As Integer = 0
+
+    Public Function travelTo(_origin As planet, _destination As planet) As report
+        origin = _origin
+        destination = _destination
+
+        Return New report()
+    End Function
+#End Region
+
+
+    Public Function tick() As List(Of report)
+        Dim replist As New List(Of report)
+
+        travelTTL -= 1
+        If travelTTL <= 0 Then
+            replist.Add(New report())
+            travelTTL = 0
+            location = destination
+            origin = Nothing
+            destination = Nothing
+        End If
+
+        Return replist
     End Function
 End Class
