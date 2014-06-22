@@ -1,11 +1,17 @@
 ﻿Module Module1
+    Private Const lastStarname As String = "Ananke"
+    Private Const lastStarMaxPlanet As Integer = 3
+    Private Const lastStarMaxCity As Integer = 3
+    Private Const dubbStarname As String = "Lelantos"
 
     Sub Main()
         Console.WriteLine("1. Starmap")
         Console.WriteLine("2. Capital")
+        Console.WriteLine("3. Travel")
         Select Case Console.ReadLine
             Case "1" : testStarmap()
             Case "2" : testCapital()
+            Case "3" : testTravel()
         End Select
     End Sub
 
@@ -17,12 +23,15 @@
                 Dim filefetch As New filefetch
                 Dim starmap As starmap = filefetch.getStarmap
                 Dim capital As capital = filefetch.getCapital(starmap)
+                filefetch.Dispose()
+
                 Console.WriteLine(capital.ToString)
                 Console.ReadLine()
 
             Case "2"
                 Dim filefetch As New filefetch
                 Dim starmap As starmap = filefetch.getStarmap
+                filefetch.Dispose()
                 generateCapital(starmap)
         End Select
     End Sub
@@ -31,9 +40,9 @@
         capital.assets.Add(New asset("Imperial Bonds", capital, 999, 3))
 
         'good test
-        Dim sourceCity As city = _starmap.getCity("Pontus", 7, 1)
+        Dim sourceCity As city = _starmap.getCity(lastStarname, lastStarMaxPlanet, 1)
         sourceCity.supply.Add(eGood.ACompounds)
-        Dim destCity As city = _starmap.getCity("Pontus", 7, 2)
+        Dim destCity As city = _starmap.getCity(lastStarname, lastStarMaxPlanet, lastStarMaxCity)
         destCity.demand.Add(eGood.ACompounds)
         capital.goods.Add(New good(eGood.ACompounds, sourceCity, destCity))
 
@@ -61,6 +70,7 @@
         Dim filefetch As New filefetch
         filefetch.writeStarmap(_starmap)
         filefetch.writeCapital(capital)
+        filefetch.Dispose()
     End Sub
 
 
@@ -71,6 +81,7 @@
             Case "1"
                 Dim filefetch As New filefetch
                 Dim starmap As starmap = filefetch.getStarmap
+                filefetch.Dispose()
                 displayStarmap(starmap)
 
             Case "2"
@@ -84,6 +95,7 @@
 
         Dim filefetch As New filefetch
         filefetch.writeStarmap(starmap)
+        filefetch.Dispose()
     End Sub
     Private Sub displayStarmap(starmap As starmap)
         For Each star In starmap.stars
@@ -107,6 +119,24 @@
         Console.ReadLine()
     End Sub
 
+
+    Private Sub testTravel()
+        Dim filefetch As New filefetch
+        Dim starmap As starmap = filefetch.getStarmap
+        Dim capital As capital = filefetch.getCapital(starmap)
+        filefetch.Dispose()
+
+        Dim dest As planet = starmap.getPlanet(lastStarname, 1)
+        Dim origin As planet = starmap.getPlanet(dubbStarname, 2)
+        Console.WriteLine("From " & origin.name & " (" & origin.star.starXY.ToString & ") to " & dest.name & " (" & dest.star.starXY.ToString & ")")
+        Console.WriteLine("Travel Distance: " & origin.star.starXY.distanceTo(dest.star.starXY))
+        Console.WriteLine("Travel Speed: " & capital.travelSpeed)
+
+        capital.travelTo(origin, dest)
+        Console.WriteLine(capital.travelTTL)
+
+        Console.ReadLine()
+    End Sub
 
     Private Function consoleDotline(length As Integer) As String
         Dim str As String = ""

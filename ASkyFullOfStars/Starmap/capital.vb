@@ -66,13 +66,16 @@
 
 
 #Region "travel"
-    Public Property origin As planet = Nothing
-    Public Property destination As planet = Nothing
+    Public Property travelSpeed As Decimal = 50
+    Private Property origin As planet = Nothing
+    Private Property destination As planet = Nothing
     Public Property travelTTL As Integer = 0
 
     Public Function travelTo(_origin As planet, _destination As planet) As report
         origin = _origin
         destination = _destination
+        Dim travelDistance As Integer = origin.star.starXY.distanceTo(destination.star.starXY)
+        travelTTL = constrain(Math.Ceiling(travelDistance / travelSpeed), 1)
 
         Return New report()
     End Function

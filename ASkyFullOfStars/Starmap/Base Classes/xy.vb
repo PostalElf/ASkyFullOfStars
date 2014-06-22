@@ -9,4 +9,12 @@
         x = _x
         y = _y
     End Sub
+
+    Public Function distanceTo(destinationXY As xy) As Integer
+        Dim a As Integer = Math.Abs(x - destinationXY.x)
+        Dim b As Integer = Math.Abs(y - destinationXY.y)
+        Dim c As Integer = Math.Ceiling(Math.Sqrt((a * a) + (b * b)))
+
+        Return c
+    End Function
 End Class

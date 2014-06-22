@@ -51,8 +51,8 @@ Public Class starmapBuilder
     Private Sub popStarXYList()
         starXYList.Clear()
 
-        For x = 1 To 10
-            For y = 1 To 10
+        For x = 1 To 9
+            For y = 1 To 9
                 Dim realX As Integer = (x * 100) + rng.Next(100)
                 Dim realY As Integer = (y * 100) + rng.Next(100)
                 starXYList.Add(New xy(realX, realY))
