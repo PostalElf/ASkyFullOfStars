@@ -6,7 +6,8 @@
             Return "Capital Ship"
         End Get
     End Property
-    Public Property assets As New List(Of asset)
+    Public Overrides Property agents As New List(Of agent)
+    Public Overrides Property assets As assets = New assets(Me)
     Public ReadOnly Property income As Decimal
         Get
             Dim assetTotal As Decimal = 0
@@ -21,9 +22,7 @@
                 Next
             Next
 
-            For Each asset In assets
-                assetTotal += asset.income
-            Next
+            assetTotal += assets.income
 
             Return assetTotal + goodsTotal
         End Get
@@ -33,9 +32,7 @@
     Public Overrides Function ToString() As String
         Dim str As String = ""
 
-        For Each asset In assets
-            str &= vbSpace & "Asset: " & asset.ToString & vbNewLine
-        Next
+        str &= assets.ToString
 
         For Each good In goods
             str &= vbSpace & "Goods: " & good.ToString & vbNewLine

@@ -1,10 +1,9 @@
 ﻿Public Class star
-    Inherits location
     Public Property starmap As starmap
     Public Property starXY As xy
     Public Property planets As New List(Of planet)
     Public Property starname As String
-    Public Overrides ReadOnly Property name As String
+    Public ReadOnly Property name As String
         Get
             Return starname
         End Get

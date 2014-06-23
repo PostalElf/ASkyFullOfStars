@@ -5,7 +5,8 @@
             Return star.name & " " & romanNumverter(number)
         End Get
     End Property
-    Public Property assets As New assets(Me)
+    Public Overrides Property assets As New assets(Me)
+    Public Overrides Property agents As New List(Of agent)
     Public Property star As star
     Public Property number As Integer
     Public Property government As eGovernment

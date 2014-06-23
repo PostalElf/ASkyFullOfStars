@@ -1,4 +1,5 @@
 ﻿Public MustInherit Class location
-    Public Property agents As New List(Of agent)
+    Public MustOverride Property agents As List(Of agent)
+    Public MustOverride Property assets As assets
     Public MustOverride ReadOnly Property name As String
 End Class

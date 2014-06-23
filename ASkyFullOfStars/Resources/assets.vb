@@ -33,6 +33,9 @@
     Public Sub remove(asset As asset)
         assetList.Remove(asset)
     End Sub
+    Public Sub construct(asset As asset)
+        newAssetList.Add(asset)
+    End Sub
 
     Public Function tick() As List(Of report)
         Dim replist As New List(Of report)
@@ -51,8 +54,4 @@
 
         Return replist
     End Function
-    Public Sub constructAsset(asset As asset)
-        'goes to newAssetList
-        newAssetList.Add(asset)
-    End Sub
 End Class

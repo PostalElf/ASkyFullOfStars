@@ -1,8 +1,8 @@
 ﻿Module Module1
-    Private Const lastStarname As String = "Ananke"
-    Private Const lastStarMaxPlanet As Integer = 3
-    Private Const lastStarMaxCity As Integer = 3
-    Private Const dubbStarname As String = "Lelantos"
+    Private Const lastStarname As String = "Perses"
+    Private Const lastStarMaxPlanet As Integer = 7
+    Private Const lastStarMaxCity As Integer = 5
+    Private Const dubbStarname As String = "Cronus"
 
     Sub Main()
         Console.WriteLine("1. Starmap")
@@ -48,7 +48,7 @@
 
 
         'asset test
-        destCity.assets.add(New asset("Ouroboros Construction", destCity, 3, -0.3))
+        destCity.assets.add(New asset("Ouroboros Construction", destCity, 3, -0.3, New asset("Ouroboros", destCity, 999, -0.1)))
 
 
         'asset tick/TTL test

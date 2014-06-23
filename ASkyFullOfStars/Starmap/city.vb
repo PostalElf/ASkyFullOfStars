@@ -23,7 +23,8 @@
         End Get
     End Property
     Public Property size As Integer
-    Public Property assets As New assets(Me)
+    Public Overrides Property assets As New assets(Me)
+    Public Overrides Property agents As New List(Of agent)
     Public Property supply As New List(Of eGood)
     Public Property demand As New List(Of eGood)
 

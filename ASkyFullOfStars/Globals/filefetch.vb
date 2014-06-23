@@ -209,7 +209,7 @@ Public Class filefetch
                 writer.WriteEndElement()
             Next
 
-            For Each asset In capital.assets
+            For Each asset In capital.assets.assetList
                 writer.WriteStartElement("asset")
                 writer.WriteStartAttribute("name")
                 writer.WriteString(asset.name)
