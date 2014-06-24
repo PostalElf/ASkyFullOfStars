@@ -22,7 +22,7 @@
             Case "1"
                 Dim filefetch As New filefetch
                 Dim player As player = filefetch.getPlayer
-                Dim starmap As starmap = filefetch.getStarmap
+                Dim starmap As starmap = filefetch.getStarmap(player)
                 Dim capital As capital = filefetch.getCapital(player, starmap)
                 filefetch.Dispose()
 
@@ -31,7 +31,8 @@
 
             Case "2"
                 Dim filefetch As New filefetch
-                Dim starmap As starmap = filefetch.getStarmap
+                Dim player As player = filefetch.getPlayer
+                Dim starmap As starmap = filefetch.getStarmap(player)
                 filefetch.Dispose()
                 generateCapital(starmap)
         End Select
@@ -39,7 +40,7 @@
     Private Sub generateCapital(_starmap As starmap)
         Dim player As New player
         Dim capital As New capital(player, _starmap)
-        capital.assets.add(New asset("Imperial Bonds", capital, 999, 3))
+        capital.assets.add(New asset("Imperial Bonds", capital, player, 999, 3))
 
         'good test
         Dim sourceCity As city = _starmap.getCity(lastStarname, lastStarMaxPlanet, 1)
@@ -50,8 +51,8 @@
 
 
         'asset test
-        destCity.assets.add(New asset("Ouroboros Construction", destCity, 3, -0.3, _
-                            New asset("Ouroboros", destCity, 999, -0.1)))
+        destCity.assets.add(New asset("Ouroboros Construction", destCity, player, 3, -0.3, _
+                            New asset("Ouroboros", destCity, player, 999, -0.1)))
 
 
         'asset tick/TTL test
@@ -83,7 +84,8 @@
         Select Case Console.ReadLine()
             Case "1"
                 Dim filefetch As New filefetch
-                Dim starmap As starmap = filefetch.getStarmap
+                Dim player As player = filefetch.getPlayer
+                Dim starmap As starmap = filefetch.getStarmap(player)
                 filefetch.Dispose()
                 displayStarmap(starmap)
 
@@ -126,7 +128,7 @@
     Private Sub testTravel()
         Dim filefetch As New filefetch
         Dim player As player = filefetch.getPlayer()
-        Dim starmap As starmap = filefetch.getStarmap
+        Dim starmap As starmap = filefetch.getStarmap(player)
         Dim capital As capital = filefetch.getCapital(player, starmap)
         filefetch.Dispose()
 

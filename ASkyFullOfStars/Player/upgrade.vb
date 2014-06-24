@@ -1,7 +1,7 @@
 ﻿Public Class upgrade
     Public Property name As String
     Public Property type As eUpgrade
-    Public Property numValue As Double
+    Public Property owner As player
 End Class
 
 Public Enum eUpgrade

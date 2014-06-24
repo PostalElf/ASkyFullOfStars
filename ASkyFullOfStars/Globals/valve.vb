@@ -102,6 +102,10 @@ Public Class range
     Public Function roll() As Integer
         Return rng.Next(min, max + 1)
     End Function
+    Public Sub add(newRange As range)
+        min += newRange.min
+        max += newRange.max
+    End Sub
 End Class
 
 

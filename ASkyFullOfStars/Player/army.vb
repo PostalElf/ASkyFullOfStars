@@ -7,7 +7,7 @@
         Get
             Dim total As Double = 0.8
             For Each upgrade In owner.upgrades
-                If upgrade.type = eUpgrade.Conscript Then total += upgrade.numValue
+
             Next
             Return total
         End Get
@@ -17,7 +17,7 @@
         Get
             Dim total As Double = 1
             For Each upgrade In owner.upgrades
-                If upgrade.type = eUpgrade.Soldier Then total += upgrade.numValue
+
             Next
             Return total
         End Get
@@ -27,7 +27,7 @@
         Get
             Dim total As Double = 1.5
             For Each upgrade In owner.upgrades
-                If upgrade.type = eUpgrade.Armour Then total += upgrade.numValue
+
             Next
             Return total
         End Get

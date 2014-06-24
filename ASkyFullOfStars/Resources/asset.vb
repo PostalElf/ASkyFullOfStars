@@ -1,6 +1,7 @@
 ﻿Public Class asset
     Public Property name As String
     Public Property location As location
+    Public Property owner As player
     Public Property ttl As Integer              'TTL 999 = infinite
     Public Property income As Decimal
     Public Property onExpire As asset
@@ -10,9 +11,10 @@
         If ttl <> 999 Then str &= ", TTL " & ttl
         Return str
     End Function
-    Public Sub New(_name As String, _location As location, _ttl As Integer, _income As Decimal, Optional ByRef _onExpire As asset = Nothing)
+    Public Sub New(_name As String, _location As location, _owner As player, _ttl As Integer, _income As Decimal, Optional ByRef _onExpire As asset = Nothing)
         name = _name
         location = _location
+        owner = _owner
         ttl = _ttl
         income = _income
         onExpire = _onExpire

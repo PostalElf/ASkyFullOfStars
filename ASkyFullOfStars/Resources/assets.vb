@@ -36,8 +36,8 @@
             Return New erroll()
         End If
     End Function
-    Public Function add(_name As String, _location As location, _ttl As Integer, _income As Decimal, Optional ByRef _onExpire As asset = Nothing) As erroll
-        Return add(New asset(_name, _location, _ttl, _income, _onExpire))
+    Public Function add(_name As String, _location As location, _owner As player, _ttl As Integer, _income As Decimal, Optional ByRef _onExpire As asset = Nothing) As erroll
+        Return add(New asset(_name, _location, _owner, _ttl, _income, _onExpire))
     End Function
     Public Sub remove(asset As asset)
         assetList.Remove(asset)

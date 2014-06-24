@@ -13,7 +13,7 @@ Public Class filefetch
     End Function
 
 
-    Public Function getStarmap() As starmap
+    Public Function getStarmap(player As player) As starmap
         Dim xmlSettings As New XmlReaderSettings
         Dim starmap As New starmap
         Dim currentStar As star = Nothing
@@ -44,7 +44,7 @@ Public Class filefetch
                             Dim assetName As String = reader.GetAttribute(0)
                             Dim assetIncome As Decimal = reader.GetAttribute(1)
                             Dim assetTTL As Integer = reader.GetAttribute(2)
-                            currentPlanet.assets.add(New asset(assetName, currentPlanet, assetTTL, assetIncome))
+                            currentPlanet.assets.add(New asset(assetName, currentPlanet, player, assetTTL, assetIncome))
 
                         Case "city"
                             Dim starname As String = reader.GetAttribute(0)
@@ -64,7 +64,7 @@ Public Class filefetch
                             Dim assetName As String = reader.GetAttribute(0)
                             Dim assetIncome As Decimal = reader.GetAttribute(1)
                             Dim assetTTL As Integer = reader.GetAttribute(2)
-                            currentCity.assets.add(New asset(assetName, currentPlanet, assetTTL, assetIncome))
+                            currentCity.assets.add(New asset(assetName, currentPlanet, player, assetTTL, assetIncome))
 
                     End Select
                 End If
@@ -185,7 +185,7 @@ Public Class filefetch
                             Dim assetName As String = reader.GetAttribute(0)
                             Dim assetIncome As Decimal = reader.GetAttribute(1)
                             Dim assetTTL As Integer = reader.GetAttribute(2)
-                            capital.assets.add(New asset(assetName, capital, assetTTL, assetIncome))
+                            capital.assets.add(New asset(assetName, capital, player, assetTTL, assetIncome))
 
                     End Select
                 End If
