@@ -2,7 +2,7 @@
     Inherits location
     Public Overrides ReadOnly Property name As String
         Get
-            Return star.name & " " & romanNumverter(number)
+            Return star.name & " " & number
         End Get
     End Property
     Public Overrides Property assets As New assets(Me)

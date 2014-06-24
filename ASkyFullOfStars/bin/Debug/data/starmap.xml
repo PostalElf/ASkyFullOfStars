@@ -1,367 +1,269 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <starmap>
-  <star name="Dione" xy="520 464">
-    <planet starname="Dione" number="1" government="5" type="3">
-      <city starname="Dione" planetnumber="1" number="1" size="2">
-        <supply type="24" />
-        <demand type="45" />
+  <star name="Styx" xy="915 631">
+    <planet starname="Styx" number="1" government="4" type="5">
+      <city starname="Styx" planetnumber="1" number="1" size="3">
+        <supply type="44" />
+        <demand type="23" />
       </city>
-      <city starname="Dione" planetnumber="1" number="2" size="3">
-        <supply type="23" />
-        <demand type="33" />
-      </city>
-      <city starname="Dione" planetnumber="1" number="3" size="2">
-        <supply type="23" />
+      <city starname="Styx" planetnumber="1" number="2" size="2">
+        <supply type="43" />
         <demand type="2" />
       </city>
     </planet>
-    <planet starname="Dione" number="2" government="2" type="4">
-      <city starname="Dione" planetnumber="2" number="1" size="1">
-        <supply type="32" />
-        <demand type="42" />
+    <planet starname="Styx" number="2" government="5" type="1">
+      <city starname="Styx" planetnumber="2" number="1" size="2">
+        <supply type="3" />
+        <demand type="31" />
       </city>
-      <city starname="Dione" planetnumber="2" number="2" size="2">
-        <supply type="32" />
+      <city starname="Styx" planetnumber="2" number="2" size="2">
+        <supply type="2" />
+        <demand type="24" />
+      </city>
+      <city starname="Styx" planetnumber="2" number="3" size="2">
+        <supply type="2" />
+        <demand type="34" />
+      </city>
+    </planet>
+    <planet starname="Styx" number="3" government="2" type="2">
+      <city starname="Styx" planetnumber="3" number="1" size="2">
+        <supply type="14" />
         <demand type="22" />
       </city>
-      <city starname="Dione" planetnumber="2" number="3" size="2">
-        <supply type="34" />
-        <demand type="12" />
+      <city starname="Styx" planetnumber="3" number="2" size="2">
+        <supply type="11" />
+        <demand type="42" />
       </city>
-      <city starname="Dione" planetnumber="2" number="4" size="2">
-        <supply type="31" />
-        <demand type="41" />
+      <city starname="Styx" planetnumber="3" number="3" size="2">
+        <supply type="14" />
+        <demand type="35" />
       </city>
-      <city starname="Dione" planetnumber="2" number="5" size="3">
-        <supply type="34" />
+    </planet>
+    <planet starname="Styx" number="4" government="1" type="3">
+      <city starname="Styx" planetnumber="4" number="1" size="2">
+        <supply type="25" />
+        <demand type="32" />
+      </city>
+      <city starname="Styx" planetnumber="4" number="2" size="1">
+        <supply type="24" />
         <demand type="43" />
       </city>
     </planet>
-    <planet starname="Dione" number="3" government="4" type="5">
-      <city starname="Dione" planetnumber="3" number="1" size="1">
-        <supply type="45" />
-        <demand type="34" />
+    <planet starname="Styx" number="5" government="3" type="4">
+      <city starname="Styx" planetnumber="5" number="1" size="2">
+        <supply type="31" />
+        <demand type="15" />
       </city>
-      <city starname="Dione" planetnumber="3" number="2" size="2">
-        <supply type="44" />
-        <demand type="5" />
+      <city starname="Styx" planetnumber="5" number="2" size="2">
+        <supply type="33" />
+        <demand type="1" />
       </city>
-      <city starname="Dione" planetnumber="3" number="3" size="2">
-        <supply type="41" />
-        <demand type="32" />
+      <city starname="Styx" planetnumber="5" number="3" size="1">
+        <supply type="35" />
+        <demand type="12" />
       </city>
-      <city starname="Dione" planetnumber="3" number="4" size="2">
-        <supply type="43" />
-        <demand type="3" />
+      <city starname="Styx" planetnumber="5" number="4" size="2">
+        <supply type="34" />
+        <demand type="13" />
+      </city>
+      <city starname="Styx" planetnumber="5" number="5" size="2">
+        <supply type="32" />
+        <demand type="11" />
       </city>
     </planet>
-    <planet starname="Dione" number="4" government="3" type="1">
-      <city starname="Dione" planetnumber="4" number="1" size="2">
+    <planet starname="Styx" number="6" government="4" type="1">
+      <city starname="Styx" planetnumber="6" number="1" size="2">
+        <supply type="5" />
+        <demand type="25" />
+      </city>
+      <city starname="Styx" planetnumber="6" number="2" size="1">
         <supply type="5" />
         <demand type="21" />
       </city>
-      <city starname="Dione" planetnumber="4" number="2" size="1">
-        <supply type="4" />
-        <demand type="24" />
-      </city>
-      <city starname="Dione" planetnumber="4" number="3" size="2">
-        <supply type="2" />
-        <demand type="13" />
-      </city>
-      <city starname="Dione" planetnumber="4" number="4" size="1">
-        <supply type="5" />
-        <demand type="23" />
-      </city>
-      <city starname="Dione" planetnumber="4" number="5" size="2">
-        <supply type="5" />
-        <demand type="31" />
-      </city>
-    </planet>
-    <planet starname="Dione" number="5" government="1" type="2">
-      <city starname="Dione" planetnumber="5" number="1" size="2">
-        <supply type="11" />
-        <demand type="4" />
-      </city>
-      <city starname="Dione" planetnumber="5" number="2" size="2">
-        <supply type="15" />
-        <demand type="1" />
-      </city>
-    </planet>
-    <planet starname="Dione" number="6" government="4" type="1">
-      <city starname="Dione" planetnumber="6" number="1" size="3">
-        <supply type="2" />
-        <demand type="14" />
-      </city>
-      <city starname="Dione" planetnumber="6" number="2" size="2">
-        <supply type="3" />
-        <demand type="35" />
-      </city>
-      <city starname="Dione" planetnumber="6" number="3" size="3">
-        <supply type="4" />
-        <demand type="25" />
-      </city>
-      <city starname="Dione" planetnumber="6" number="4" size="1">
+      <city starname="Styx" planetnumber="6" number="3" size="3">
         <supply type="1" />
         <demand type="44" />
       </city>
-      <city starname="Dione" planetnumber="6" number="5" size="2">
-        <supply type="3" />
-        <demand type="11" />
+      <city starname="Styx" planetnumber="6" number="4" size="2">
+        <supply type="5" />
+        <demand type="14" />
       </city>
     </planet>
   </star>
-  <star name="Helios" xy="451 682">
-    <planet starname="Helios" number="1" government="2" type="3">
-      <city starname="Helios" planetnumber="1" number="1" size="2">
-        <supply type="23" />
+  <star name="Ourea" xy="823 832">
+    <planet starname="Ourea" number="1" government="3" type="2">
+      <city starname="Ourea" planetnumber="1" number="1" size="2">
+        <supply type="12" />
+        <demand type="33" />
+      </city>
+      <city starname="Ourea" planetnumber="1" number="2" size="2">
+        <supply type="13" />
+        <demand type="45" />
+      </city>
+      <city starname="Ourea" planetnumber="1" number="3" size="1">
+        <supply type="14" />
+        <demand type="5" />
+      </city>
+      <city starname="Ourea" planetnumber="1" number="4" size="2">
+        <supply type="11" />
+        <demand type="41" />
+      </city>
+      <city starname="Ourea" planetnumber="1" number="5" size="1">
+        <supply type="13" />
+        <demand type="4" />
+      </city>
+    </planet>
+    <planet starname="Ourea" number="2" government="1" type="4">
+      <city starname="Ourea" planetnumber="2" number="1" size="3">
+        <supply type="33" />
+        <demand type="3" />
+      </city>
+      <city starname="Ourea" planetnumber="2" number="2" size="2">
+        <supply type="32" />
+        <demand type="1" />
+      </city>
+      <city starname="Ourea" planetnumber="2" number="3" size="1">
+        <supply type="34" />
+        <demand type="2" />
+      </city>
+      <city starname="Ourea" planetnumber="2" number="4" size="2">
+        <supply type="34" />
+        <demand type="21" />
+      </city>
+      <city starname="Ourea" planetnumber="2" number="5" size="1">
+        <supply type="32" />
+        <demand type="23" />
+      </city>
+    </planet>
+    <planet starname="Ourea" number="3" government="5" type="5">
+      <city starname="Ourea" planetnumber="3" number="1" size="1">
+        <supply type="42" />
+        <demand type="24" />
+      </city>
+      <city starname="Ourea" planetnumber="3" number="2" size="2">
+        <supply type="45" />
+        <demand type="31" />
+      </city>
+      <city starname="Ourea" planetnumber="3" number="3" size="2">
+        <supply type="45" />
         <demand type="15" />
       </city>
-      <city starname="Helios" planetnumber="1" number="2" size="1">
+      <city starname="Ourea" planetnumber="3" number="4" size="1">
+        <supply type="43" />
+        <demand type="13" />
+      </city>
+    </planet>
+    <planet starname="Ourea" number="4" government="2" type="3">
+      <city starname="Ourea" planetnumber="4" number="1" size="2">
+        <supply type="25" />
+        <demand type="33" />
+      </city>
+      <city starname="Ourea" planetnumber="4" number="2" size="2">
+        <supply type="25" />
+        <demand type="45" />
+      </city>
+      <city starname="Ourea" planetnumber="4" number="3" size="2">
         <supply type="22" />
-        <demand type="15" />
+        <demand type="12" />
       </city>
-      <city starname="Helios" planetnumber="1" number="3" size="3">
-        <supply type="24" />
-        <demand type="11" />
-      </city>
-      <city starname="Helios" planetnumber="1" number="4" size="2">
+      <city starname="Ourea" planetnumber="4" number="4" size="1">
         <supply type="24" />
         <demand type="3" />
       </city>
-      <city starname="Helios" planetnumber="1" number="5" size="2">
-        <supply type="22" />
-        <demand type="1" />
-      </city>
-    </planet>
-    <planet starname="Helios" number="2" government="1" type="4">
-      <city starname="Helios" planetnumber="2" number="1" size="2">
-        <supply type="32" />
-        <demand type="22" />
-      </city>
-      <city starname="Helios" planetnumber="2" number="2" size="2">
-        <supply type="35" />
+      <city starname="Ourea" planetnumber="4" number="5" size="2">
+        <supply type="25" />
         <demand type="41" />
       </city>
     </planet>
-    <planet starname="Helios" number="3" government="3" type="2">
-      <city starname="Helios" planetnumber="3" number="1" size="2">
-        <supply type="15" />
-        <demand type="24" />
-      </city>
-      <city starname="Helios" planetnumber="3" number="2" size="2">
-        <supply type="13" />
-        <demand type="5" />
-      </city>
-      <city starname="Helios" planetnumber="3" number="3" size="3">
-        <supply type="15" />
-        <demand type="31" />
-      </city>
-      <city starname="Helios" planetnumber="3" number="4" size="3">
-        <supply type="15" />
-        <demand type="21" />
-      </city>
-      <city starname="Helios" planetnumber="3" number="5" size="2">
+  </star>
+  <star name="Themis" xy="259 363">
+    <planet starname="Themis" number="1" government="5" type="2">
+      <city starname="Themis" planetnumber="1" number="1" size="2">
         <supply type="12" />
         <demand type="32" />
       </city>
-    </planet>
-    <planet starname="Helios" number="4" government="5" type="5">
-      <city starname="Helios" planetnumber="4" number="1" size="2">
-        <supply type="44" />
-        <demand type="4" />
-      </city>
-      <city starname="Helios" planetnumber="4" number="2" size="1">
-        <supply type="45" />
-        <demand type="23" />
-      </city>
-      <city starname="Helios" planetnumber="4" number="3" size="2">
-        <supply type="42" />
-        <demand type="12" />
-      </city>
-    </planet>
-    <planet starname="Helios" number="5" government="3" type="3">
-      <city starname="Helios" planetnumber="5" number="1" size="2">
-        <supply type="23" />
-        <demand type="45" />
-      </city>
-      <city starname="Helios" planetnumber="5" number="2" size="2">
-        <supply type="21" />
-        <demand type="35" />
-      </city>
-      <city starname="Helios" planetnumber="5" number="3" size="3">
-        <supply type="25" />
-        <demand type="2" />
-      </city>
-      <city starname="Helios" planetnumber="5" number="4" size="2">
-        <supply type="24" />
-        <demand type="14" />
-      </city>
-    </planet>
-  </star>
-  <star name="Eurybia" xy="246 888">
-    <planet starname="Eurybia" number="1" government="2" type="2">
-      <city starname="Eurybia" planetnumber="1" number="1" size="2">
-        <supply type="11" />
+      <city starname="Themis" planetnumber="1" number="2" size="2">
+        <supply type="13" />
         <demand type="44" />
       </city>
-      <city starname="Eurybia" planetnumber="1" number="2" size="2">
-        <supply type="13" />
-        <demand type="33" />
-      </city>
-      <city starname="Eurybia" planetnumber="1" number="3" size="2">
+      <city starname="Themis" planetnumber="1" number="3" size="2">
         <supply type="11" />
-        <demand type="42" />
+        <demand type="4" />
       </city>
-      <city starname="Eurybia" planetnumber="1" number="4" size="1">
-        <supply type="11" />
-        <demand type="25" />
-      </city>
-      <city starname="Eurybia" planetnumber="1" number="5" size="3">
-        <supply type="14" />
+      <city starname="Themis" planetnumber="1" number="4" size="2">
+        <supply type="15" />
         <demand type="34" />
       </city>
     </planet>
-    <planet starname="Eurybia" number="2" government="4" type="4">
-      <city starname="Eurybia" planetnumber="2" number="1" size="2">
-        <supply type="32" />
-        <demand type="43" />
+    <planet starname="Themis" number="2" government="1" type="5">
+      <city starname="Themis" planetnumber="2" number="1" size="2">
+        <supply type="44" />
+        <demand type="25" />
       </city>
-      <city starname="Eurybia" planetnumber="2" number="2" size="1">
-        <supply type="31" />
-        <demand type="13" />
-      </city>
-      <city starname="Eurybia" planetnumber="2" number="3" size="2">
-        <supply type="32" />
+      <city starname="Themis" planetnumber="2" number="2" size="2">
+        <supply type="41" />
         <demand type="14" />
       </city>
-    </planet>
-    <planet starname="Eurybia" number="3" government="5" type="1">
-      <city starname="Eurybia" planetnumber="3" number="1" size="2">
-        <supply type="2" />
-        <demand type="23" />
-      </city>
-      <city starname="Eurybia" planetnumber="3" number="2" size="2">
-        <supply type="2" />
-        <demand type="42" />
-      </city>
-      <city starname="Eurybia" planetnumber="3" number="3" size="2">
-        <supply type="5" />
-        <demand type="33" />
-      </city>
-      <city starname="Eurybia" planetnumber="3" number="4" size="2">
-        <supply type="5" />
-        <demand type="12" />
-      </city>
-    </planet>
-    <planet starname="Eurybia" number="4" government="1" type="5">
-      <city starname="Eurybia" planetnumber="4" number="1" size="2">
+      <city starname="Themis" planetnumber="2" number="3" size="3">
         <supply type="43" />
-        <demand type="24" />
-      </city>
-      <city starname="Eurybia" planetnumber="4" number="2" size="2">
-        <supply type="42" />
-        <demand type="2" />
-      </city>
-    </planet>
-  </star>
-  <star name="Ophion" xy="133 432">
-    <planet starname="Ophion" number="1" government="3" type="2">
-      <city starname="Ophion" planetnumber="1" number="1" size="1">
-        <supply type="11" />
         <demand type="5" />
       </city>
-      <city starname="Ophion" planetnumber="1" number="2" size="2">
-        <supply type="11" />
+    </planet>
+    <planet starname="Themis" number="3" government="3" type="3">
+      <city starname="Themis" planetnumber="3" number="1" size="2">
+        <supply type="21" />
+        <demand type="43" />
+      </city>
+      <city starname="Themis" planetnumber="3" number="2" size="3">
+        <supply type="21" />
+        <demand type="42" />
+      </city>
+      <city starname="Themis" planetnumber="3" number="3" size="1">
+        <supply type="24" />
         <demand type="35" />
       </city>
-      <city starname="Ophion" planetnumber="1" number="3" size="2">
-        <supply type="14" />
+    </planet>
+    <planet starname="Themis" number="4" government="2" type="4">
+      <city starname="Themis" planetnumber="4" number="1" size="2">
+        <supply type="32" />
+        <demand type="22" />
+      </city>
+      <city starname="Themis" planetnumber="4" number="2" size="3">
+        <supply type="31" />
+        <demand type="11" />
+      </city>
+      <city starname="Themis" planetnumber="4" number="3" size="1">
+        <supply type="32" />
+        <demand type="42" />
+      </city>
+      <city starname="Themis" planetnumber="4" number="4" size="1">
+        <supply type="32" />
         <demand type="21" />
       </city>
     </planet>
-    <planet starname="Ophion" number="2" government="4" type="1">
-      <city starname="Ophion" planetnumber="2" number="1" size="3">
-        <supply type="3" />
-        <demand type="31" />
+    <planet starname="Themis" number="5" government="4" type="1">
+      <city starname="Themis" planetnumber="5" number="1" size="1">
+        <supply type="2" />
+        <demand type="43" />
       </city>
-      <city starname="Ophion" planetnumber="2" number="2" size="3">
-        <supply type="3" />
+      <city starname="Themis" planetnumber="5" number="2" size="3">
+        <supply type="5" />
         <demand type="44" />
       </city>
-      <city starname="Ophion" planetnumber="2" number="3" size="1">
-        <supply type="4" />
-        <demand type="13" />
-      </city>
-      <city starname="Ophion" planetnumber="2" number="4" size="2">
-        <supply type="2" />
+      <city starname="Themis" planetnumber="5" number="3" size="1">
+        <supply type="5" />
         <demand type="41" />
       </city>
     </planet>
-    <planet starname="Ophion" number="3" government="5" type="4">
-      <city starname="Ophion" planetnumber="3" number="1" size="2">
-        <supply type="34" />
-        <demand type="45" />
-      </city>
-      <city starname="Ophion" planetnumber="3" number="2" size="2">
-        <supply type="32" />
-        <demand type="4" />
-      </city>
-      <city starname="Ophion" planetnumber="3" number="3" size="1">
-        <supply type="31" />
-        <demand type="22" />
-      </city>
-    </planet>
-    <planet starname="Ophion" number="4" government="1" type="3">
-      <city starname="Ophion" planetnumber="4" number="1" size="2">
-        <supply type="23" />
-        <demand type="15" />
-      </city>
-      <city starname="Ophion" planetnumber="4" number="2" size="2">
-        <supply type="21" />
-        <demand type="34" />
-      </city>
-    </planet>
-    <planet starname="Ophion" number="5" government="2" type="5">
-      <city starname="Ophion" planetnumber="5" number="1" size="2">
-        <supply type="43" />
+    <planet starname="Themis" number="6" government="2" type="2">
+      <city starname="Themis" planetnumber="6" number="1" size="2">
+        <supply type="13" />
+        <supply type="33" />
         <demand type="1" />
       </city>
-      <city starname="Ophion" planetnumber="5" number="2" size="2">
-        <supply type="45" />
-        <demand type="11" />
-      </city>
-    </planet>
-    <planet starname="Ophion" number="6" government="5" type="1">
-      <city starname="Ophion" planetnumber="6" number="1" size="3">
-        <supply type="2" />
-        <demand type="43" />
-      </city>
-      <city starname="Ophion" planetnumber="6" number="2" size="2">
-        <supply type="4" />
-        <demand type="32" />
-      </city>
-      <city starname="Ophion" planetnumber="6" number="3" size="1">
-        <supply type="2" />
-        <demand type="25" />
-      </city>
-      <city starname="Ophion" planetnumber="6" number="4" size="2">
-        <supply type="2" />
-        <demand type="23" />
-      </city>
-      <city starname="Ophion" planetnumber="6" number="5" size="3">
-        <supply type="5" />
-        <demand type="42" />
-      </city>
-    </planet>
-    <planet starname="Ophion" number="7" government="3" type="4">
-      <city starname="Ophion" planetnumber="7" number="1" size="2">
-        <supply type="34" />
-        <supply type="33" />
-        <demand type="43" />
-      </city>
-      <city starname="Ophion" planetnumber="7" number="2" size="2">
-        <supply type="34" />
-        <demand type="15" />
+      <city starname="Themis" planetnumber="6" number="2" size="1">
+        <supply type="12" />
+        <demand type="22" />
         <demand type="33" />
         <cityAsset name="Ouroboros" income="-0.1" ttl="999" />
       </city>

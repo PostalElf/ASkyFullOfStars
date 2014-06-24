@@ -1,8 +1,8 @@
 ﻿Module Module1
-    Private Const lastStarname As String = "Ophion"
-    Private Const lastStarMaxPlanet As Integer = 7
+    Private Const lastStarname As String = "Themis"
+    Private Const lastStarMaxPlanet As Integer = 6
     Private Const lastStarMaxCity As Integer = 2
-    Private Const dubbStarname As String = "Eurybia"
+    Private Const dubbStarname As String = "Ourea"
 
     Sub Main()
         Console.WriteLine("1. Starmap")
@@ -40,7 +40,7 @@
     Private Sub generateCapital(_starmap As starmap)
         Dim player As New player
         Dim capital As New capital(player, _starmap)
-        capital.assets.add(New asset("Imperial Bonds", capital, player, 999, 3))
+        capital.assets.add(New asset("Imperial Bonds", eAsset.Investment, capital, player, 999, 3))
 
         'good test
         Dim sourceCity As city = _starmap.getCity(lastStarname, lastStarMaxPlanet, 1)
@@ -51,8 +51,8 @@
 
 
         'asset test
-        destCity.assets.add(New asset("Ouroboros Construction", destCity, player, 3, -0.3, _
-                            New asset("Ouroboros", destCity, player, 999, -0.1)))
+        destCity.assets.add(New asset("Ouroboros Construction", eAsset.Infrastructure, destCity, player, 3, -0.3, _
+                            New asset("Ouroboros", eAsset.Infrastructure, destCity, player, 999, -0.1)))
 
 
         'asset tick/TTL test

@@ -4,7 +4,7 @@
     Public Property number As Integer
     Public Overrides ReadOnly Property name As String
         Get
-            Return planet.name & "-" & alphaNumverter(number)
+            Return planet.name & "-" & romanNumverter(number)
         End Get
     End Property
     Public ReadOnly Property id As String

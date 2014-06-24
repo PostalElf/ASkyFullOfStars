@@ -1,15 +1,15 @@
 ﻿Public Class assets
     Public Property location As location
-    Public ReadOnly Property income As Decimal
+    Public ReadOnly Property income As Double
         Get
-            Dim total As Decimal = 0
+            Dim total As Double = 0
             For Each asset In assetList
                 total += asset.income
             Next
             Return total
         End Get
     End Property
-    Public Property assetList As New List(Of asset)
+    Private Property assetList As New List(Of asset)
     Private Property newAssetList As New List(Of asset)
 
     Public Overrides Function ToString() As String
@@ -36,8 +36,8 @@
             Return New erroll()
         End If
     End Function
-    Public Function add(_name As String, _location As location, _owner As player, _ttl As Integer, _income As Decimal, Optional ByRef _onExpire As asset = Nothing) As erroll
-        Return add(New asset(_name, _location, _owner, _ttl, _income, _onExpire))
+    Public Function add(_name As String, _type As eAsset, _location As location, _owner As player, _ttl As Integer, _income As Double, Optional ByRef _onExpire As asset = Nothing) As erroll
+        Return add(New asset(_name, _type, _location, _owner, _ttl, _income, _onExpire))
     End Function
     Public Sub remove(asset As asset)
         assetList.Remove(asset)
@@ -51,6 +51,22 @@
             If asset.name = name Then Return asset
         Next
         Return Nothing
+    End Function
+    Public Function getAssets(type As eAsset) As List(Of asset)
+        If type = eAsset.All Then Return assetList
+
+        Dim replist As New List(Of asset)
+        For Each asset In assetList
+            If asset.type = type Then replist.Add(asset)
+        Next
+        Return replist
+    End Function
+    Public Function getAssets(type As eAsset, _owner As player) As List(Of asset)
+        Dim replist As New List(Of asset)
+        For Each asset In assetList
+            If asset.type = type AndAlso asset.owner.Equals(_owner) Then replist.Add(asset)
+        Next
+        Return replist
     End Function
     Public Sub construct(asset As asset)
         newAssetList.Add(asset)

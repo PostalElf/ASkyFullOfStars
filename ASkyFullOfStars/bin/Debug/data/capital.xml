@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <capital>
-  <good type="33" source="Ophion 7 1" destination="Ophion 7 2" />
+  <good type="33" source="Themis 6 1" destination="Themis 6 2" />
   <asset name="Imperial Bonds" income="3" ttl="999" />
 </capital>

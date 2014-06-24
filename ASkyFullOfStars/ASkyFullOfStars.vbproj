@@ -92,7 +92,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Player\upgrade.vb" />
     <Compile Include="Resources\asset.vb" />
     <Compile Include="Resources\assets.vb" />
     <Compile Include="Player\good.vb" />

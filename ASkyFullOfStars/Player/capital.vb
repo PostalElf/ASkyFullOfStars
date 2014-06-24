@@ -1,6 +1,6 @@
 ﻿Public Class capital
     Inherits location
-    Public Property player As player
+    Public Property owner As player
     Public Property starmap As starmap
     Public Overrides ReadOnly Property name As String
         Get
@@ -9,10 +9,10 @@
     End Property
     Public Overrides Property agents As New List(Of agent)
     Public Overrides Property assets As assets = New assets(Me)
-    Public ReadOnly Property income As Decimal
+    Public ReadOnly Property income As Double
         Get
-            Dim assetTotal As Decimal = 0
-            Dim goodsTotal As Decimal = 0
+            Dim assetTotal As Double = 0
+            Dim goodsTotal As Double = 0
 
             For Each star In starmap.stars
                 For Each planet In star.planets
@@ -44,8 +44,8 @@
 
         Return str
     End Function
-    Public Sub New(_player As player, _starmap As starmap)
-        player = _player
+    Public Sub New(_owner As player, _starmap As starmap)
+        owner = _owner
         starmap = _starmap
     End Sub
 
@@ -65,7 +65,7 @@
 
 
 #Region "travel"
-    Public Property travelSpeed As Decimal = 100
+    Public Property travelSpeed As Double = 100
     Private Property origin As planet = Nothing
     Private Property destination As planet = Nothing
     Public Property travelTTL As Integer = 0

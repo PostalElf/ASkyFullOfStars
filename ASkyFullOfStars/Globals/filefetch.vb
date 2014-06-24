@@ -42,9 +42,10 @@ Public Class filefetch
 
                         Case "planetAsset"
                             Dim assetName As String = reader.GetAttribute(0)
-                            Dim assetIncome As Decimal = reader.GetAttribute(1)
+                            Dim assetType As eAsset = reader.GetAttribute(1)
                             Dim assetTTL As Integer = reader.GetAttribute(2)
-                            currentPlanet.assets.add(New asset(assetName, currentPlanet, player, assetTTL, assetIncome))
+                            Dim assetIncome As Double = reader.GetAttribute(3)
+                            currentPlanet.assets.add(New asset(assetName, assetType, currentPlanet, player, assetTTL, assetIncome))
 
                         Case "city"
                             Dim starname As String = reader.GetAttribute(0)
@@ -62,9 +63,10 @@ Public Class filefetch
 
                         Case "cityAsset"
                             Dim assetName As String = reader.GetAttribute(0)
-                            Dim assetIncome As Decimal = reader.GetAttribute(1)
+                            Dim assetType As eAsset = reader.GetAttribute(1)
                             Dim assetTTL As Integer = reader.GetAttribute(2)
-                            currentCity.assets.add(New asset(assetName, currentPlanet, player, assetTTL, assetIncome))
+                            Dim assetIncome As Double = reader.GetAttribute(3)
+                            currentCity.assets.add(New asset(assetName, assetType, currentPlanet, player, assetTTL, assetIncome))
 
                     End Select
                 End If
@@ -101,14 +103,16 @@ Public Class filefetch
                     writer.WriteString(planet.type)
                     writer.WriteEndAttribute()
 
-                    For Each asset In planet.assets.assetList
+                    For Each asset In planet.assets.getAssets(eAsset.All)
                         writer.WriteStartElement("planetAsset")
                         writer.WriteStartAttribute("name")
                         writer.WriteString(asset.name)
-                        writer.WriteStartAttribute("income")
-                        writer.WriteString(asset.income)
+                        writer.WriteStartAttribute("type")
+                        writer.WriteString(asset.type)
                         writer.WriteStartAttribute("ttl")
                         writer.WriteString(asset.ttl)
+                        writer.WriteStartAttribute("income")
+                        writer.WriteString(asset.income)
                         writer.WriteEndAttribute()
                         writer.WriteEndElement()
                     Next
@@ -141,14 +145,16 @@ Public Class filefetch
                             writer.WriteEndElement()
                         Next
 
-                        For Each asset In city.assets.assetList
+                        For Each asset In city.assets.getAssets(eAsset.All)
                             writer.WriteStartElement("cityAsset")
                             writer.WriteStartAttribute("name")
                             writer.WriteString(asset.name)
-                            writer.WriteStartAttribute("income")
-                            writer.WriteString(asset.income)
+                            writer.WriteStartAttribute("type")
+                            writer.WriteString(asset.type)
                             writer.WriteStartAttribute("ttl")
                             writer.WriteString(asset.ttl)
+                            writer.WriteStartAttribute("income")
+                            writer.WriteString(asset.income)
                             writer.WriteEndAttribute()
                             writer.WriteEndElement()
                         Next
@@ -183,9 +189,10 @@ Public Class filefetch
 
                         Case "asset"
                             Dim assetName As String = reader.GetAttribute(0)
-                            Dim assetIncome As Decimal = reader.GetAttribute(1)
-                            Dim assetTTL As Integer = reader.GetAttribute(2)
-                            capital.assets.add(New asset(assetName, capital, player, assetTTL, assetIncome))
+                            Dim assetType As eAsset = CInt(reader.GetAttribute(1))
+                            Dim assetTTL As Integer = CInt(reader.GetAttribute(2))
+                            Dim assetIncome As Double = CDbl(reader.GetAttribute(3))
+                            capital.assets.add(New asset(assetName, assetType, capital, player, assetTTL, assetIncome))
 
                     End Select
                 End If
@@ -216,7 +223,7 @@ Public Class filefetch
                 writer.WriteEndElement()
             Next
 
-            For Each asset In capital.assets.assetList
+            For Each asset In capital.assets.getAssets(eAsset.All)
                 writer.WriteStartElement("asset")
                 writer.WriteStartAttribute("name")
                 writer.WriteString(asset.name)
