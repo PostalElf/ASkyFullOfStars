@@ -1,17 +1,19 @@
 ﻿Module Module1
-    Private Const lastStarname As String = "Themis"
-    Private Const lastStarMaxPlanet As Integer = 6
+    Private Const lastStarname As String = "Thalassa"
+    Private Const lastStarMaxPlanet As Integer = 7
     Private Const lastStarMaxCity As Integer = 2
-    Private Const dubbStarname As String = "Ourea"
+    Private Const dubbStarname As String = "Theia"
 
     Sub Main()
         Console.WriteLine("1. Starmap")
         Console.WriteLine("2. Capital")
         Console.WriteLine("3. Travel")
+        Console.WriteLine("4. Battle")
         Select Case Console.ReadLine
             Case "1" : testStarmap()
             Case "2" : testCapital()
             Case "3" : testTravel()
+            Case "4" : testBattle()
         End Select
     End Sub
 
@@ -51,8 +53,8 @@
 
 
         'asset test
-        destCity.assets.add(New asset("Ouroboros Construction", eAsset.Infrastructure, destCity, player, 3, -0.3, _
-                            New asset("Ouroboros", eAsset.Infrastructure, destCity, player, 999, -0.1)))
+        destCity.assets.add(New infrastructureAsset("Ouroboros Construction", destCity, player, 3, -0.3, _
+                            New infrastructureAsset("Ouroboros", destCity, player, 999, -0.1)))
 
 
         'asset tick/TTL test
@@ -148,6 +150,32 @@
         Next
 
         Console.ReadLine()
+    End Sub
+
+
+    Private Sub testBattle()
+        Dim filefetch As New filefetch
+        Dim player As player = filefetch.getPlayer
+        Dim starmap As starmap = filefetch.getStarmap(player)
+        Dim capital As capital = filefetch.getCapital(player, starmap)
+        filefetch.Dispose()
+
+        Dim army As New army(player, capital)
+        With army
+            .units.Add(New unit(eUnit.Conscript, 100))
+            .units.Add(New unit(eUnit.Soldier, 20))
+            .addAsset(New militaryAsset("Basic Training", Nothing, player, 999, -0.1, eUnit.Conscript, 0.1))
+        End With
+        Console.WriteLine(army.ToString)
+        Console.WriteLine("Total Power: " & army.totalPower)
+        Console.ReadLine()
+
+        While army.units.Count > 0
+            army.takeDamage(120)
+            Console.WriteLine(army.ToString)
+            Console.WriteLine("Total Power: " & army.totalPower)
+            Console.ReadLine()
+        End While
     End Sub
 
     Private Function consoleDotline(length As Integer) As String

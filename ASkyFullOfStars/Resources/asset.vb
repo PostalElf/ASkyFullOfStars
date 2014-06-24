@@ -14,6 +14,7 @@
     End Function
     Public Sub New(_name As String, _type As eAsset, _location As location, _owner As player, _ttl As Integer, _income As Double, Optional ByRef _onExpire As asset = Nothing)
         name = _name
+        type = _type
         location = _location
         owner = _owner
         ttl = _ttl
@@ -52,9 +53,58 @@ Public Class militaryAsset
     Public Property unitType As eUnit
     Public Property unitPower As Double
 
-    Public Sub New(_name As String, _type As eAsset, _location As location, _owner As player, _ttl As Integer, _income As Double, _unitType As eUnit, _unitPower As Double, Optional ByRef _onExpire As asset = Nothing)
-        MyBase.New(_name, _type, _location, _owner, _ttl, _income, _onExpire)
+    Public Sub New(_name As String, _location As location, _owner As player, _ttl As Integer, _income As Double, _unitType As eUnit, _unitPower As Double, Optional ByRef _onExpire As asset = Nothing)
+        MyBase.New(_name, eAsset.Military, _location, _owner, _ttl, _income, _onExpire)
         unitType = _unitType
         unitPower = _unitPower
+    End Sub
+End Class
+
+
+Public Class investmentAsset
+    Inherits asset
+    Public Sub New(_name As String, _location As location, _owner As player, _ttl As Integer, _income As Double, ByRef _onExpire As asset)
+        MyBase.New(_name, eAsset.Investment, _location, _owner, _ttl, _income, _onExpire)
+    End Sub
+End Class
+
+
+Public Class productionAsset
+    Inherits asset
+    Public Property demand As eGood
+    Public Property supply As eGood
+
+    Public Sub New(_name As String, _location As location, _owner As player, _ttl As Integer, _income As Double, _demand As eGood, _supply As eGood, Optional ByRef _onExpire As asset = Nothing)
+        MyBase.New(_name, eAsset.Production, _location, _owner, _ttl, _income, _onExpire)
+        demand = _demand
+        supply = _supply
+    End Sub
+End Class
+
+
+Public Class infrastructureAsset
+    Inherits asset
+    Public Sub New(_name As String, _location As location, _owner As player, _ttl As Integer, _income As Double, Optional ByRef _onExpire As asset = Nothing)
+        MyBase.New(_name, eAsset.Infrastructure, _location, _owner, _ttl, _income, _onExpire)
+    End Sub
+End Class
+
+
+Public Class provocateurAsset
+    Inherits asset
+    Public Property chaosIncome As range
+
+
+    Public Sub New(_name As String, _location As location, _owner As player, _ttl As Integer, _income As Double, _chaosIncome As range, Optional ByRef _onExpire As asset = Nothing)
+        MyBase.New(_name, eAsset.Provocateur, _location, _owner, _ttl, _income, _onExpire)
+        chaosIncome = _chaosIncome
+    End Sub
+End Class
+
+
+Public Class debuffAsset
+    Inherits asset
+    Public Sub New(_name As String, _location As location, _owner As player, _ttl As Integer, _income As Double, Optional ByRef _onExpire As asset = Nothing)
+        MyBase.New(_name, eAsset.Debuff, _location, _owner, _ttl, _income, _onExpire)
     End Sub
 End Class
