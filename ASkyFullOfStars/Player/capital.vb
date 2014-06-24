@@ -1,5 +1,6 @@
 ﻿Public Class capital
     Inherits location
+    Public Property player As player
     Public Property starmap As starmap
     Public Overrides ReadOnly Property name As String
         Get
@@ -43,7 +44,8 @@
 
         Return str
     End Function
-    Public Sub New(_starmap As starmap)
+    Public Sub New(_player As player, _starmap As starmap)
+        player = _player
         starmap = _starmap
     End Sub
 

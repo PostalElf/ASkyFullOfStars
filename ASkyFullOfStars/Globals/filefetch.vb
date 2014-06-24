@@ -3,8 +3,15 @@
 Public Class filefetch
     Implements IDisposable
     Private Const filePath As String = "data\"
+    Private Const playerFilename As String = "player.xml"
     Private Const starmapFilename As String = "starmap.xml"
     Private Const capitalFilename As String = "capital.xml"
+
+
+    Public Function getPlayer() As player
+        Return New player
+    End Function
+
 
     Public Function getStarmap() As starmap
         Dim xmlSettings As New XmlReaderSettings
@@ -160,9 +167,9 @@ Public Class filefetch
         End Using
     End Sub
 
-    Public Function getCapital(starmap As starmap) As capital
+    Public Function getCapital(player As player, starmap As starmap) As capital
         Dim xmlSettings As New XmlReaderSettings
-        Dim capital As New capital(starmap)
+        Dim capital As New capital(player, starmap)
 
         Using reader As XmlReader = XmlReader.Create(filePath & capitalFilename, xmlSettings)
             While reader.Read()
@@ -178,7 +185,7 @@ Public Class filefetch
                             Dim assetName As String = reader.GetAttribute(0)
                             Dim assetIncome As Decimal = reader.GetAttribute(1)
                             Dim assetTTL As Integer = reader.GetAttribute(2)
-                            capital.assets.Add(New asset(assetName, capital, assetTTL, assetIncome))
+                            capital.assets.add(New asset(assetName, capital, assetTTL, assetIncome))
 
                     End Select
                 End If
