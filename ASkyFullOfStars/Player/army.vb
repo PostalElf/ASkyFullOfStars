@@ -70,20 +70,13 @@
             unit.resetPower()
         Next
 
-        'populate list with militaryAssets from self and current location
-        Dim assetList As New List(Of asset)(assets.getAssets(eAsset.Military))
-        If location.assets Is Nothing = False Then assetList.AddRange(location.assets.getAssets(eAsset.Military, owner))
-
-
         'start adding bonuses
-        For Each asset In assetList
+        For Each asset In assets.getAssets(eAsset.Military)
             Dim milAsset As militaryAsset = CType(asset, militaryAsset)
             For Each unit In units
                 If unit.type = milAsset.type Then unit.power += milAsset.unitPower
             Next
         Next
-
-        assetList = Nothing
     End Sub
 End Class
 

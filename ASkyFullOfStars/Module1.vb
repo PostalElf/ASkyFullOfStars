@@ -82,7 +82,8 @@
 
     Private Sub testStarmap()
         Console.WriteLine("1. Fetch")
-        Console.WriteLine("2. Generate")
+        Console.WriteLine("2. Fetch First City")
+        Console.WriteLine("3. Generate")
         Select Case Console.ReadLine()
             Case "1"
                 Dim filefetch As New filefetch
@@ -92,11 +93,29 @@
                 displayStarmap(starmap)
 
             Case "2"
+                Dim filefetch As New filefetch
+                Dim player As player = filefetch.getPlayer
+                Dim starmap As starmap = filefetch.getStarmap(player)
+                filefetch.Dispose()
+
+                For n = 1 To 5
+                    Dim currentCity As city = starmap.stars(0).planets(0).cities(0)
+                    Console.WriteLine(currentCity.ToString)
+                    Console.ReadLine()
+
+                    currentCity.tick()
+                Next
+
+            Case "3"
                 generateStarmap()
         End Select
     End Sub
     Private Sub generateStarmap()
         Dim starmap As New starmap(New starmapBuilder(1))
+        Dim currentCity As city = starmap.stars(0).planets(0).cities(0)
+        currentCity.assets.add(New productionAsset("Gravy Train", currentCity, New player, 999, -0.1, eGood.EFoods, eGood.CMaterials))
+        currentCity.assets.add(New investmentAsset("Chewy Farm", currentCity, New player, 3, -0.1, _
+                                New investmentAsset("Chewed-Up Farm", currentCity, New player, 10, 0.2, Nothing)))
 
         displayStarmap(starmap)
 

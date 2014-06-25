@@ -19,6 +19,7 @@ Public Class filefetch
         Dim currentStar As star = Nothing
         Dim currentPlanet As planet = Nothing
         Dim currentCity As city = Nothing
+        Dim currentAsset As asset = Nothing
 
         Using reader As XmlReader = XmlReader.Create(filePath & starmapFilename, xmlSettings)
             While reader.Read()
@@ -41,11 +42,8 @@ Public Class filefetch
                             currentPlanet = planet
 
                         Case "planetAsset"
-                            Dim assetName As String = reader.GetAttribute(0)
-                            Dim assetType As eAsset = reader.GetAttribute(1)
-                            Dim assetTTL As Integer = reader.GetAttribute(2)
-                            Dim assetIncome As Double = reader.GetAttribute(3)
-                            currentPlanet.assets.add(New asset(assetName, assetType, currentPlanet, player, assetTTL, assetIncome))
+                            currentAsset = getAsset(reader, currentPlanet, player)
+                            currentPlanet.assets.add(currentAsset)
 
                         Case "city"
                             Dim starname As String = reader.GetAttribute(0)
@@ -62,11 +60,13 @@ Public Class filefetch
                             currentCity.demand.Add(reader.GetAttribute(0))
 
                         Case "cityAsset"
-                            Dim assetName As String = reader.GetAttribute(0)
-                            Dim assetType As eAsset = reader.GetAttribute(1)
-                            Dim assetTTL As Integer = reader.GetAttribute(2)
-                            Dim assetIncome As Double = reader.GetAttribute(3)
-                            currentCity.assets.add(New asset(assetName, assetType, currentPlanet, player, assetTTL, assetIncome))
+                            currentAsset = getAsset(reader, currentCity, player)
+                            currentCity.assets.add(currentAsset)
+
+                        Case "assetOnExpire"
+                            Dim onExpire As asset = getAsset(reader, currentAsset.location, currentAsset.owner)
+                            currentAsset.onExpire = onExpire
+                            currentAsset = onExpire
 
                     End Select
                 End If
@@ -104,17 +104,7 @@ Public Class filefetch
                     writer.WriteEndAttribute()
 
                     For Each asset In planet.assets.getAssets(eAsset.All)
-                        writer.WriteStartElement("planetAsset")
-                        writer.WriteStartAttribute("name")
-                        writer.WriteString(asset.name)
-                        writer.WriteStartAttribute("type")
-                        writer.WriteString(asset.type)
-                        writer.WriteStartAttribute("ttl")
-                        writer.WriteString(asset.ttl)
-                        writer.WriteStartAttribute("income")
-                        writer.WriteString(asset.income)
-                        writer.WriteEndAttribute()
-                        writer.WriteEndElement()
+                        writeAsset(writer, asset, "planetAsset")
                     Next
 
                     For Each city In planet.cities
@@ -146,17 +136,7 @@ Public Class filefetch
                         Next
 
                         For Each asset In city.assets.getAssets(eAsset.All)
-                            writer.WriteStartElement("cityAsset")
-                            writer.WriteStartAttribute("name")
-                            writer.WriteString(asset.name)
-                            writer.WriteStartAttribute("type")
-                            writer.WriteString(asset.type)
-                            writer.WriteStartAttribute("ttl")
-                            writer.WriteString(asset.ttl)
-                            writer.WriteStartAttribute("income")
-                            writer.WriteString(asset.income)
-                            writer.WriteEndAttribute()
-                            writer.WriteEndElement()
+                            writeAsset(writer, asset, "cityAsset")
                         Next
 
                         writer.WriteEndElement()        'closes city
@@ -188,11 +168,7 @@ Public Class filefetch
                             capital.goods.Add(New good(type, source, dest))
 
                         Case "asset"
-                            Dim assetName As String = reader.GetAttribute(0)
-                            Dim assetType As eAsset = CInt(reader.GetAttribute(1))
-                            Dim assetTTL As Integer = CInt(reader.GetAttribute(2))
-                            Dim assetIncome As Double = CDbl(reader.GetAttribute(3))
-                            capital.assets.add(New asset(assetName, assetType, capital, player, assetTTL, assetIncome))
+                            capital.assets.add(getAsset(reader, capital, player))
 
                     End Select
                 End If
@@ -224,22 +200,83 @@ Public Class filefetch
             Next
 
             For Each asset In capital.assets.getAssets(eAsset.All)
-                writer.WriteStartElement("asset")
-                writer.WriteStartAttribute("name")
-                writer.WriteString(asset.name)
-                writer.WriteStartAttribute("type")
-                writer.WriteString(asset.type)
-                writer.WriteStartAttribute("ttl")
-                writer.WriteString(asset.ttl)
-                writer.WriteStartAttribute("income")
-                writer.WriteString(asset.income)
-                writer.WriteEndAttribute()
-                writer.WriteEndElement()
+                writeAsset(writer, asset, "asset")
             Next
 
             writer.WriteEndElement()              'closes root
             writer.WriteEndDocument()
         End Using
+    End Sub
+
+    Private Function getAsset(ByRef reader As XmlReader, ByRef location As location, ByRef player As player) As asset
+        Dim assetName As String = reader.GetAttribute(0)
+        Dim assetType As eAsset = CInt(reader.GetAttribute(1))
+        Dim assetTTL As Integer = CInt(reader.GetAttribute(2))
+        Dim assetIncome As Double = CDbl(reader.GetAttribute(3))
+
+        Select Case assetType
+            Case eAsset.Debuff
+                Return New debuffAsset(assetName, location, player, assetTTL, assetIncome)
+            Case eAsset.Infrastructure
+                Return New infrastructureAsset(assetName, location, player, assetTTL, assetIncome)
+            Case eAsset.Investment
+                Return New investmentAsset(assetName, location, player, assetTTL, assetIncome, Nothing)
+            Case eAsset.Military
+                Dim unitType As eUnit = reader.GetAttribute(4)
+                Dim unitPower As Double = CDbl(reader.GetAttribute(5))
+                Return New militaryAsset(assetName, location, player, assetTTL, assetIncome, unitType, unitPower)
+            Case eAsset.Production
+                Dim supply As eGood = reader.GetAttribute(4)
+                Dim demand As eGood = reader.GetAttribute(5)
+                Return New productionAsset(assetName, location, player, assetTTL, assetIncome, demand, supply)
+            Case eAsset.Provocateur
+                Dim min As Integer = reader.GetAttribute(4)
+                Dim max As Integer = reader.GetAttribute(5)
+                Return New provocateurAsset(assetName, location, player, assetTTL, assetIncome, New range(min, max))
+            Case Else : Return Nothing
+        End Select
+        Return New asset(assetName, assetType, location, player, assetTTL, assetIncome)
+    End Function
+    Private Sub writeAsset(ByRef writer As XmlWriter, ByRef asset As asset, assetName As String)
+        writer.WriteStartElement(assetName)
+        writer.WriteStartAttribute("name")
+        writer.WriteString(asset.name)
+        writer.WriteStartAttribute("type")
+        writer.WriteString(asset.type)
+        writer.WriteStartAttribute("ttl")
+        writer.WriteString(asset.ttl)
+        writer.WriteStartAttribute("income")
+        writer.WriteString(asset.income)
+
+        Select Case asset.type
+            Case eAsset.Debuff                  'do nothing
+            Case eAsset.Infrastructure          'do nothing
+            Case eAsset.Investment              'do nothing
+            Case eAsset.Military
+                Dim milasset As militaryAsset = CType(asset, militaryAsset)
+                writer.WriteStartAttribute("unitType")
+                writer.WriteString(milasset.unitType)
+                writer.WriteStartAttribute("unitPower")
+                writer.WriteString(milasset.unitPower)
+            Case eAsset.Production
+                Dim prodAsset As productionAsset = CType(asset, productionAsset)
+                writer.WriteStartAttribute("supply")
+                writer.WriteString(prodAsset.supply)
+                writer.WriteStartAttribute("demand")
+                writer.WriteString(prodAsset.demand)
+            Case eAsset.Provocateur
+                Dim provAsset As provocateurAsset = CType(asset, provocateurAsset)
+                writer.WriteStartAttribute("min")
+                writer.WriteString(provAsset.chaosIncome.min)
+                writer.WriteStartAttribute("max")
+                writer.WriteString(provAsset.chaosIncome.max)
+        End Select
+
+        writer.WriteEndAttribute()
+
+        If asset.onExpire Is Nothing = False Then writeAsset(writer, asset.onExpire, "assetOnExpire")
+
+        writer.WriteEndElement()
     End Sub
 
 #Region "IDisposable Support"
