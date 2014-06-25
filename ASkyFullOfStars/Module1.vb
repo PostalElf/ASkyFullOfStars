@@ -41,22 +41,19 @@
         filefetch.writeStarmap(starmap)
         filefetch.Dispose()
     End Sub
-    Private Sub displayTick()
-
-    End Sub
 
 
     Private Sub generateStarmap()
-        Dim player As New player
+        Dim player As New player("Tubby")
         Dim starmap As New starmap(New starmapBuilder(1))
         Dim capital As capital = generateCapital(player, starmap)
 
 
         'asset test
         Dim currentCity As city = starmap.stars(0).planets(0).cities(0)
-        currentCity.assets.add(New productionAsset("Gravy Train", currentCity, New player, 999, -0.1, eGood.EFoods, eGood.CMaterials))
-        currentCity.assets.add(New investmentAsset("Chewy Farm", currentCity, New player, 3, -0.1, _
-                                New investmentAsset("Chewed-Up Farm", currentCity, New player, 10, 0.2, Nothing)))
+        currentCity.assets.add(New productionAsset("Gravy Train", currentCity, player, -0.1, eGood.EFoods, eGood.CMaterials))
+        currentCity.assets.add(New investmentAsset("Chewy Farm", currentCity, player, 3, -0.1, Nothing, _
+                                New investmentAsset("Chewed-Up Farm", currentCity, player, 10, 0.2, Nothing, Nothing)))
 
 
         'show starmap
@@ -92,7 +89,7 @@
     End Sub
 
 
-    Private Function generateCapital(player As player, starmap As starmap) As capital
+    Private Function generateCapital(ByRef player As player, ByRef starmap As starmap) As capital
         Dim capital As New capital(player, starmap)
         capital.assets.add(New asset("Imperial Bonds", eAsset.Investment, capital, player, 999, 3))
 

@@ -30,9 +30,16 @@
     Public Function add(asset As asset) As erroll
         'ensure that the asset is unique before adding
         If getAsset(asset.name) Is Nothing = True Then
+            'check for special cases
+            Dim erroll As erroll = onConstruct(asset)
+            If erroll Is Nothing = False Then Return erroll
+
+
+            'all clear, add to list and return no errors
             assetList.Add(asset)
             Return Nothing
         Else
+            'not unique, return error
             Return New erroll()
         End If
     End Function
@@ -71,6 +78,27 @@
     Public Sub construct(asset As asset)
         newAssetList.Add(asset)
     End Sub
+
+    Private Function onConstruct(asset As asset) As erroll
+        Select Case asset.type
+            Case eAsset.Investment
+                If TypeOf location Is city = False Then Return New erroll
+                Dim invAsset As investmentAsset = CType(asset, investmentAsset)
+                Dim city As city = CType(location, city)
+                If city.supply.Contains(invAsset.requiredSupply) Then
+                    'has supply; consume it before adding asset
+                    'supply will be returned on TTL <= 0 within asset.tick.onDeconstruct
+                    city.supply.Remove(invAsset.requiredSupply)
+                    Return Nothing
+                Else
+                    'has no supply, cannot build
+                    Return New erroll
+                End If
+
+            Case Else
+                Return Nothing
+        End Select
+    End Function
 
     Public Function tick() As List(Of report)
         Dim replist As New List(Of report)

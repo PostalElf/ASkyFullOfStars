@@ -1,377 +1,290 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <starmap>
-  <star name="Leto" xy="301 493">
-    <planet starname="Leto" number="1" government="3" type="3">
-      <city starname="Leto" planetnumber="1" number="1" size="2">
-        <supply type="24" />
+  <star name="Tethys" xy="719 596">
+    <planet starname="Tethys" number="1" government="4" type="5">
+      <city starname="Tethys" planetnumber="1" number="1" size="3">
+        <supply type="44" />
         <supply type="33" />
-        <demand type="44" />
+        <demand type="24" />
         <cityAsset name="Gravy Train" type="3" ttl="999" income="-0.1" supply="3" demand="32" />
-        <cityAsset name="Chewed-Up Farm" type="2" ttl="7" income="0.2" />
       </city>
-      <city starname="Leto" planetnumber="1" number="2" size="2">
-        <supply type="23" />
-        <demand type="13" />
-      </city>
-    </planet>
-    <planet starname="Leto" number="2" government="1" type="2">
-      <city starname="Leto" planetnumber="2" number="1" size="2">
-        <supply type="13" />
-        <demand type="31" />
-        <demand type="33" />
-        <cityAsset name="Ouroboros" type="4" ttl="999" income="-0.1" />
-      </city>
-      <city starname="Leto" planetnumber="2" number="2" size="3">
-        <supply type="12" />
-        <demand type="25" />
-      </city>
-      <city starname="Leto" planetnumber="2" number="3" size="2">
-        <supply type="12" />
-        <demand type="34" />
-      </city>
-      <city starname="Leto" planetnumber="2" number="4" size="2">
-        <supply type="14" />
-        <demand type="22" />
-      </city>
-      <city starname="Leto" planetnumber="2" number="5" size="1">
-        <supply type="11" />
-        <demand type="33" />
-      </city>
-    </planet>
-    <planet starname="Leto" number="3" government="2" type="4">
-      <city starname="Leto" planetnumber="3" number="1" size="2">
-        <supply type="34" />
-        <demand type="21" />
-      </city>
-      <city starname="Leto" planetnumber="3" number="2" size="3">
-        <supply type="35" />
-        <demand type="2" />
-      </city>
-      <city starname="Leto" planetnumber="3" number="3" size="1">
-        <supply type="34" />
-        <demand type="11" />
-      </city>
-      <city starname="Leto" planetnumber="3" number="4" size="2">
-        <supply type="31" />
+      <city starname="Tethys" planetnumber="1" number="2" size="1">
+        <supply type="43" />
         <demand type="15" />
       </city>
-    </planet>
-    <planet starname="Leto" number="4" government="5" type="5">
-      <city starname="Leto" planetnumber="4" number="1" size="1">
+      <city starname="Tethys" planetnumber="1" number="3" size="2">
         <supply type="43" />
-        <demand type="12" />
+        <demand type="31" />
       </city>
-      <city starname="Leto" planetnumber="4" number="2" size="3">
-        <supply type="45" />
+      <city starname="Tethys" planetnumber="1" number="4" size="1">
+        <supply type="42" />
+        <demand type="3" />
+      </city>
+    </planet>
+    <planet starname="Tethys" number="2" government="3" type="2">
+      <city starname="Tethys" planetnumber="2" number="1" size="3">
+        <supply type="12" />
+        <demand type="45" />
+        <demand type="33" />
+        <cityAsset name="Ouroboros Construction" type="4" ttl="3" income="-0.3">
+          <assetOnExpire name="Ouroboros" type="4" ttl="999" income="-0.1" />
+        </cityAsset>
+      </city>
+      <city starname="Tethys" planetnumber="2" number="2" size="1">
+        <supply type="14" />
+        <demand type="43" />
+      </city>
+    </planet>
+    <planet starname="Tethys" number="3" government="2" type="4">
+      <city starname="Tethys" planetnumber="3" number="1" size="3">
+        <supply type="31" />
+        <demand type="11" />
+      </city>
+      <city starname="Tethys" planetnumber="3" number="2" size="2">
+        <supply type="34" />
         <demand type="4" />
       </city>
-      <city starname="Leto" planetnumber="4" number="3" size="2">
-        <supply type="44" />
-        <demand type="5" />
-      </city>
-      <city starname="Leto" planetnumber="4" number="4" size="1">
-        <supply type="42" />
-        <demand type="23" />
-      </city>
     </planet>
-    <planet starname="Leto" number="5" government="4" type="1">
-      <city starname="Leto" planetnumber="5" number="1" size="2">
-        <supply type="5" />
+    <planet starname="Tethys" number="4" government="1" type="3">
+      <city starname="Tethys" planetnumber="4" number="1" size="2">
+        <supply type="25" />
+        <demand type="42" />
+      </city>
+      <city starname="Tethys" planetnumber="4" number="2" size="2">
+        <supply type="24" />
+        <demand type="33" />
+      </city>
+      <city starname="Tethys" planetnumber="4" number="3" size="1">
+        <supply type="21" />
+        <demand type="12" />
+      </city>
+      <city starname="Tethys" planetnumber="4" number="4" size="3">
+        <supply type="23" />
         <demand type="41" />
       </city>
-      <city starname="Leto" planetnumber="5" number="2" size="3">
-        <supply type="5" />
-        <demand type="45" />
+      <city starname="Tethys" planetnumber="4" number="5" size="2">
+        <supply type="25" />
+        <demand type="5" />
       </city>
-      <city starname="Leto" planetnumber="5" number="3" size="1">
-        <supply type="1" />
-        <demand type="24" />
+    </planet>
+    <planet starname="Tethys" number="5" government="5" type="1">
+      <city starname="Tethys" planetnumber="5" number="1" size="3">
+        <supply type="4" />
+        <demand type="22" />
       </city>
-      <city starname="Leto" planetnumber="5" number="4" size="2">
+      <city starname="Tethys" planetnumber="5" number="2" size="3">
+        <supply type="2" />
+        <demand type="13" />
+      </city>
+      <city starname="Tethys" planetnumber="5" number="3" size="2">
         <supply type="5" />
-        <demand type="14" />
+        <demand type="35" />
       </city>
     </planet>
   </star>
-  <star name="Astraeus" xy="597 318">
-    <planet starname="Astraeus" number="1" government="5" type="3">
-      <city starname="Astraeus" planetnumber="1" number="1" size="1">
-        <supply type="22" />
+  <star name="Ophion" xy="410 949">
+    <planet starname="Ophion" number="1" government="1" type="2">
+      <city starname="Ophion" planetnumber="1" number="1" size="3">
+        <supply type="15" />
+        <demand type="21" />
+      </city>
+      <city starname="Ophion" planetnumber="1" number="2" size="3">
+        <supply type="11" />
         <demand type="32" />
       </city>
-      <city starname="Astraeus" planetnumber="1" number="2" size="2">
-        <supply type="23" />
-        <demand type="42" />
-      </city>
-      <city starname="Astraeus" planetnumber="1" number="3" size="2">
-        <supply type="24" />
-        <demand type="3" />
-      </city>
-      <city starname="Astraeus" planetnumber="1" number="4" size="2">
-        <supply type="21" />
-        <demand type="43" />
-      </city>
-      <city starname="Astraeus" planetnumber="1" number="5" size="2">
-        <supply type="23" />
-        <demand type="1" />
+      <city starname="Ophion" planetnumber="1" number="3" size="1">
+        <supply type="15" />
+        <demand type="34" />
       </city>
     </planet>
-    <planet starname="Astraeus" number="2" government="1" type="4">
-      <city starname="Astraeus" planetnumber="2" number="1" size="2">
-        <supply type="33" />
-        <demand type="43" />
+    <planet starname="Ophion" number="2" government="4" type="1">
+      <city starname="Ophion" planetnumber="2" number="1" size="3">
+        <supply type="2" />
+        <demand type="44" />
       </city>
-      <city starname="Astraeus" planetnumber="2" number="2" size="2">
+      <city starname="Ophion" planetnumber="2" number="2" size="2">
+        <supply type="3" />
+        <demand type="23" />
+      </city>
+      <city starname="Ophion" planetnumber="2" number="3" size="2">
+        <supply type="4" />
+        <demand type="14" />
+      </city>
+      <city starname="Ophion" planetnumber="2" number="4" size="2">
+        <supply type="1" />
+        <demand type="25" />
+      </city>
+    </planet>
+    <planet starname="Ophion" number="3" government="2" type="5">
+      <city starname="Ophion" planetnumber="3" number="1" size="2">
+        <supply type="43" />
+        <demand type="2" />
+      </city>
+      <city starname="Ophion" planetnumber="3" number="2" size="1">
+        <supply type="43" />
+        <demand type="1" />
+      </city>
+      <city starname="Ophion" planetnumber="3" number="3" size="2">
+        <supply type="42" />
+        <demand type="13" />
+      </city>
+    </planet>
+    <planet starname="Ophion" number="4" government="5" type="3">
+      <city starname="Ophion" planetnumber="4" number="1" size="2">
+        <supply type="24" />
+        <demand type="35" />
+      </city>
+      <city starname="Ophion" planetnumber="4" number="2" size="3">
+        <supply type="24" />
+        <demand type="15" />
+      </city>
+    </planet>
+    <planet starname="Ophion" number="5" government="3" type="4">
+      <city starname="Ophion" planetnumber="5" number="1" size="3">
+        <supply type="32" />
+        <demand type="5" />
+      </city>
+      <city starname="Ophion" planetnumber="5" number="2" size="2">
         <supply type="32" />
         <demand type="22" />
       </city>
-      <city starname="Astraeus" planetnumber="2" number="3" size="3">
-        <supply type="34" />
-        <demand type="2" />
+      <city starname="Ophion" planetnumber="5" number="3" size="3">
+        <supply type="35" />
+        <demand type="21" />
       </city>
-    </planet>
-    <planet starname="Astraeus" number="3" government="4" type="1">
-      <city starname="Astraeus" planetnumber="3" number="1" size="2">
-        <supply type="4" />
-        <demand type="13" />
-      </city>
-      <city starname="Astraeus" planetnumber="3" number="2" size="2">
-        <supply type="2" />
+      <city starname="Ophion" planetnumber="5" number="4" size="2">
+        <supply type="35" />
         <demand type="45" />
       </city>
-      <city starname="Astraeus" planetnumber="3" number="3" size="3">
-        <supply type="2" />
-        <demand type="23" />
+      <city starname="Ophion" planetnumber="5" number="5" size="2">
+        <supply type="33" />
+        <demand type="25" />
       </city>
     </planet>
-    <planet starname="Astraeus" number="4" government="2" type="2">
-      <city starname="Astraeus" planetnumber="4" number="1" size="2">
-        <supply type="15" />
-        <demand type="31" />
-      </city>
-      <city starname="Astraeus" planetnumber="4" number="2" size="2">
-        <supply type="15" />
-        <demand type="41" />
-      </city>
-    </planet>
-    <planet starname="Astraeus" number="5" government="3" type="5">
-      <city starname="Astraeus" planetnumber="5" number="1" size="2">
-        <supply type="43" />
-        <demand type="5" />
-      </city>
-      <city starname="Astraeus" planetnumber="5" number="2" size="2">
-        <supply type="45" />
-        <demand type="24" />
-      </city>
-      <city starname="Astraeus" planetnumber="5" number="3" size="1">
-        <supply type="45" />
+    <planet starname="Ophion" number="6" government="3" type="4">
+      <city starname="Ophion" planetnumber="6" number="1" size="2">
+        <supply type="35" />
         <demand type="14" />
       </city>
-      <city starname="Astraeus" planetnumber="5" number="4" size="3">
-        <supply type="42" />
-        <demand type="12" />
+      <city starname="Ophion" planetnumber="6" number="2" size="2">
+        <supply type="35" />
+        <demand type="2" />
       </city>
-      <city starname="Astraeus" planetnumber="5" number="5" size="3">
-        <supply type="44" />
+      <city starname="Ophion" planetnumber="6" number="3" size="3">
+        <supply type="32" />
+        <demand type="24" />
+      </city>
+      <city starname="Ophion" planetnumber="6" number="4" size="1">
+        <supply type="34" />
         <demand type="3" />
       </city>
     </planet>
-    <planet starname="Astraeus" number="6" government="2" type="1">
-      <city starname="Astraeus" planetnumber="6" number="1" size="1">
-        <supply type="5" />
+  </star>
+  <star name="Cronus" xy="316 647">
+    <planet starname="Cronus" number="1" government="1" type="2">
+      <city starname="Cronus" planetnumber="1" number="1" size="2">
+        <supply type="15" />
+        <demand type="23" />
+      </city>
+      <city starname="Cronus" planetnumber="1" number="2" size="3">
+        <supply type="12" />
         <demand type="42" />
       </city>
-      <city starname="Astraeus" planetnumber="6" number="2" size="2">
-        <supply type="2" />
-        <demand type="33" />
-      </city>
-      <city starname="Astraeus" planetnumber="6" number="3" size="3">
-        <supply type="3" />
-        <demand type="11" />
-      </city>
-      <city starname="Astraeus" planetnumber="6" number="4" size="2">
-        <supply type="1" />
-        <demand type="32" />
-      </city>
-      <city starname="Astraeus" planetnumber="6" number="5" size="2">
-        <supply type="5" />
+    </planet>
+    <planet starname="Cronus" number="2" government="2" type="3">
+      <city starname="Cronus" planetnumber="2" number="1" size="2">
+        <supply type="23" />
         <demand type="34" />
       </city>
-    </planet>
-    <planet starname="Astraeus" number="7" government="5" type="4">
-      <city starname="Astraeus" planetnumber="7" number="1" size="1">
-        <supply type="34" />
-        <demand type="25" />
-      </city>
-      <city starname="Astraeus" planetnumber="7" number="2" size="2">
-        <supply type="31" />
-        <demand type="44" />
-      </city>
-      <city starname="Astraeus" planetnumber="7" number="3" size="3">
-        <supply type="33" />
-        <demand type="21" />
-      </city>
-    </planet>
-  </star>
-  <star name="Metis" xy="858 604">
-    <planet starname="Metis" number="1" government="4" type="3">
-      <city starname="Metis" planetnumber="1" number="1" size="1">
+      <city starname="Cronus" planetnumber="2" number="2" size="3">
         <supply type="21" />
-        <demand type="35" />
+        <demand type="12" />
       </city>
-      <city starname="Metis" planetnumber="1" number="2" size="2">
-        <supply type="21" />
-        <demand type="15" />
-      </city>
-      <city starname="Metis" planetnumber="1" number="3" size="1">
-        <supply type="24" />
-        <demand type="4" />
-      </city>
-      <city starname="Metis" planetnumber="1" number="4" size="2">
-        <supply type="22" />
-        <demand type="1" />
+      <city starname="Cronus" planetnumber="2" number="3" size="2">
+        <supply type="25" />
+        <demand type="11" />
       </city>
     </planet>
-    <planet starname="Metis" number="2" government="1" type="2">
-      <city starname="Metis" planetnumber="2" number="1" size="3">
-        <supply type="11" />
-        <demand type="41" />
-      </city>
-      <city starname="Metis" planetnumber="2" number="2" size="1">
-        <supply type="12" />
+    <planet starname="Cronus" number="3" government="4" type="1">
+      <city starname="Cronus" planetnumber="3" number="1" size="2">
+        <supply type="4" />
         <demand type="43" />
       </city>
-      <city starname="Metis" planetnumber="2" number="3" size="2">
-        <supply type="12" />
-        <demand type="21" />
-      </city>
-      <city starname="Metis" planetnumber="2" number="4" size="2">
-        <supply type="12" />
-        <demand type="34" />
-      </city>
-    </planet>
-    <planet starname="Metis" number="3" government="3" type="5">
-      <city starname="Metis" planetnumber="3" number="1" size="1">
-        <supply type="45" />
-        <demand type="35" />
-      </city>
-      <city starname="Metis" planetnumber="3" number="2" size="2">
-        <supply type="45" />
-        <demand type="32" />
-      </city>
-      <city starname="Metis" planetnumber="3" number="3" size="2">
-        <supply type="43" />
-        <demand type="12" />
-      </city>
-      <city starname="Metis" planetnumber="3" number="4" size="1">
-        <supply type="42" />
-        <demand type="1" />
-      </city>
-      <city starname="Metis" planetnumber="3" number="5" size="3">
-        <supply type="41" />
+      <city starname="Cronus" planetnumber="3" number="2" size="1">
+        <supply type="1" />
         <demand type="33" />
       </city>
     </planet>
-  </star>
-  <star name="Hemera" xy="110 831">
-    <planet starname="Hemera" number="1" government="1" type="4">
-      <city starname="Hemera" planetnumber="1" number="1" size="1">
-        <supply type="31" />
-        <demand type="42" />
+    <planet starname="Cronus" number="4" government="5" type="5">
+      <city starname="Cronus" planetnumber="4" number="1" size="2">
+        <supply type="43" />
+        <demand type="31" />
       </city>
-      <city starname="Hemera" planetnumber="1" number="2" size="3">
-        <supply type="34" />
-        <demand type="14" />
+      <city starname="Cronus" planetnumber="4" number="2" size="2">
+        <supply type="41" />
+        <demand type="1" />
       </city>
-      <city starname="Hemera" planetnumber="1" number="3" size="1">
-        <supply type="33" />
+      <city starname="Cronus" planetnumber="4" number="3" size="3">
+        <supply type="41" />
         <demand type="4" />
       </city>
-      <city starname="Hemera" planetnumber="1" number="4" size="3">
-        <supply type="33" />
+    </planet>
+    <planet starname="Cronus" number="5" government="5" type="3">
+      <city starname="Cronus" planetnumber="5" number="1" size="2">
+        <supply type="24" />
+        <demand type="32" />
+      </city>
+      <city starname="Cronus" planetnumber="5" number="2" size="1">
+        <supply type="22" />
+        <demand type="44" />
+      </city>
+      <city starname="Cronus" planetnumber="5" number="3" size="2">
+        <supply type="21" />
+        <demand type="41" />
+      </city>
+      <city starname="Cronus" planetnumber="5" number="4" size="2">
+        <supply type="22" />
         <demand type="11" />
       </city>
     </planet>
-    <planet starname="Hemera" number="2" government="2" type="3">
-      <city starname="Hemera" planetnumber="2" number="1" size="2">
-        <supply type="24" />
-        <demand type="15" />
-      </city>
-      <city starname="Hemera" planetnumber="2" number="2" size="3">
-        <supply type="22" />
-        <demand type="2" />
-      </city>
-    </planet>
-    <planet starname="Hemera" number="3" government="5" type="2">
-      <city starname="Hemera" planetnumber="3" number="1" size="2">
-        <supply type="14" />
-        <demand type="24" />
-      </city>
-      <city starname="Hemera" planetnumber="3" number="2" size="2">
-        <supply type="12" />
-        <demand type="5" />
-      </city>
-    </planet>
-    <planet starname="Hemera" number="4" government="3" type="5">
-      <city starname="Hemera" planetnumber="4" number="1" size="1">
-        <supply type="41" />
-        <demand type="3" />
-      </city>
-      <city starname="Hemera" planetnumber="4" number="2" size="2">
-        <supply type="43" />
+    <planet starname="Cronus" number="6" government="2" type="4">
+      <city starname="Cronus" planetnumber="6" number="1" size="2">
+        <supply type="32" />
         <demand type="25" />
       </city>
-      <city starname="Hemera" planetnumber="4" number="3" size="2">
-        <supply type="41" />
-        <demand type="22" />
-      </city>
-      <city starname="Hemera" planetnumber="4" number="4" size="3">
-        <supply type="43" />
-        <demand type="31" />
-      </city>
-      <city starname="Hemera" planetnumber="4" number="5" size="2">
-        <supply type="45" />
+      <city starname="Cronus" planetnumber="6" number="2" size="2">
+        <supply type="32" />
         <demand type="13" />
       </city>
-    </planet>
-    <planet starname="Hemera" number="5" government="4" type="1">
-      <city starname="Hemera" planetnumber="5" number="1" size="3">
-        <supply type="2" />
+      <city starname="Cronus" planetnumber="6" number="3" size="1">
+        <supply type="35" />
         <demand type="45" />
       </city>
-      <city starname="Hemera" planetnumber="5" number="2" size="1">
-        <supply type="4" />
-        <demand type="44" />
-      </city>
-      <city starname="Hemera" planetnumber="5" number="3" size="2">
-        <supply type="2" />
+      <city starname="Cronus" planetnumber="6" number="4" size="2">
+        <supply type="35" />
         <demand type="23" />
       </city>
-      <city starname="Hemera" planetnumber="5" number="4" size="2">
-        <supply type="2" />
-        <demand type="41" />
+      <city starname="Cronus" planetnumber="6" number="5" size="1">
+        <supply type="33" />
+        <demand type="1" />
       </city>
     </planet>
-    <planet starname="Hemera" number="6" government="3" type="1">
-      <city starname="Hemera" planetnumber="6" number="1" size="2">
-        <supply type="5" />
-        <demand type="25" />
+    <planet starname="Cronus" number="7" government="4" type="2">
+      <city starname="Cronus" planetnumber="7" number="1" size="3">
+        <supply type="12" />
+        <demand type="21" />
       </city>
-      <city starname="Hemera" planetnumber="6" number="2" size="2">
-        <supply type="4" />
-        <demand type="24" />
+      <city starname="Cronus" planetnumber="7" number="2" size="1">
+        <supply type="11" />
+        <demand type="33" />
       </city>
-      <city starname="Hemera" planetnumber="6" number="3" size="1">
-        <supply type="4" />
-        <demand type="42" />
+      <city starname="Cronus" planetnumber="7" number="3" size="2">
+        <supply type="11" />
+        <demand type="32" />
       </city>
-      <city starname="Hemera" planetnumber="6" number="4" size="3">
-        <supply type="3" />
-        <demand type="23" />
-      </city>
-      <city starname="Hemera" planetnumber="6" number="5" size="1">
-        <supply type="1" />
-        <demand type="31" />
+      <city starname="Cronus" planetnumber="7" number="4" size="2">
+        <supply type="14" />
+        <demand type="41" />
       </city>
     </planet>
   </star>

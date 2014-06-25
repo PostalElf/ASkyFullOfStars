@@ -25,6 +25,10 @@
     Public Function tick() As report
         If ttl <> 999 Then ttl -= 1
         If ttl <= 0 Then
+            'special case check
+            onDeconstruct()
+
+            'unfold onExpire
             If onExpire Is Nothing = False Then
                 location.assets.construct(onExpire)
                 Return New report
@@ -33,6 +37,15 @@
 
         Return Nothing
     End Function
+    Private Sub onDeconstruct()
+        Select Case type
+            Case eAsset.Investment
+                Dim invAsset As investmentAsset = CType(Me, investmentAsset)
+                Dim city As city = CType(location, city)
+                If invAsset.requiredSupply = 0 Then Exit Sub
+                city.supply.Add(invAsset.requiredSupply)
+        End Select
+    End Sub
 End Class
 
 
@@ -63,8 +76,11 @@ End Class
 
 Public Class investmentAsset
     Inherits asset
-    Public Sub New(_name As String, _location As location, _owner As player, _ttl As Integer, _income As Double, ByRef _onExpire As asset)
+    Public Property requiredSupply As eGood
+
+    Public Sub New(_name As String, _location As location, _owner As player, _ttl As Integer, _income As Double, _requiredSupply As eGood, ByRef _onExpire As asset)
         MyBase.New(_name, eAsset.Investment, _location, _owner, _ttl, _income, _onExpire)
+        requiredSupply = _requiredSupply
     End Sub
 End Class
 
@@ -74,8 +90,11 @@ Public Class productionAsset
     Public Property demand As eGood
     Public Property supply As eGood
 
-    Public Sub New(_name As String, _location As location, _owner As player, _ttl As Integer, _income As Double, _demand As eGood, _supply As eGood, Optional ByRef _onExpire As asset = Nothing)
-        MyBase.New(_name, eAsset.Production, _location, _owner, _ttl, _income, _onExpire)
+    Public Sub New(_name As String, _location As location, _owner As player, _income As Double, _demand As eGood, _supply As eGood, Optional ByRef _onExpire As asset = Nothing)
+        'all production assets must have TTL = 999
+        'otherwise coding will screw up when adding supply/demand goods
+
+        MyBase.New(_name, eAsset.Production, _location, _owner, 999, _income, _onExpire)
         demand = _demand
         supply = _supply
     End Sub

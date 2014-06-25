@@ -9,7 +9,7 @@ Public Class filefetch
 
 
     Public Function getPlayer() As player
-        Return New player
+        Return New player("Tubby")
     End Function
 
 
@@ -220,7 +220,8 @@ Public Class filefetch
             Case eAsset.Infrastructure
                 Return New infrastructureAsset(assetName, location, player, assetTTL, assetIncome)
             Case eAsset.Investment
-                Return New investmentAsset(assetName, location, player, assetTTL, assetIncome, Nothing)
+                Dim requiredSupply As eGood = reader.GetAttribute(4)
+                Return New investmentAsset(assetName, location, player, assetTTL, assetIncome, requiredSupply, Nothing)
             Case eAsset.Military
                 Dim unitType As eUnit = reader.GetAttribute(4)
                 Dim unitPower As Double = CDbl(reader.GetAttribute(5))
@@ -228,7 +229,7 @@ Public Class filefetch
             Case eAsset.Production
                 Dim supply As eGood = reader.GetAttribute(4)
                 Dim demand As eGood = reader.GetAttribute(5)
-                Return New productionAsset(assetName, location, player, assetTTL, assetIncome, demand, supply)
+                Return New productionAsset(assetName, location, player, assetIncome, demand, supply)
             Case eAsset.Provocateur
                 Dim min As Integer = reader.GetAttribute(4)
                 Dim max As Integer = reader.GetAttribute(5)
@@ -251,7 +252,10 @@ Public Class filefetch
         Select Case asset.type
             Case eAsset.Debuff                  'do nothing
             Case eAsset.Infrastructure          'do nothing
-            Case eAsset.Investment              'do nothing
+            Case eAsset.Investment
+                Dim invAsset As investmentAsset = CType(asset, investmentAsset)
+                writer.WriteStartAttribute("requiredSupply")
+                writer.WriteString(invAsset.requiredSupply)
             Case eAsset.Military
                 Dim milasset As militaryAsset = CType(asset, militaryAsset)
                 writer.WriteStartAttribute("unitType")
