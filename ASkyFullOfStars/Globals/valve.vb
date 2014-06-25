@@ -25,6 +25,10 @@ Module valve
         If value < 0 Then Return "" Else Return "+"
     End Function
 
+    Public Function signAndValue(value As Decimal) As String
+        Return sign(value) & value
+    End Function
+
     Public Function coinFlip() As Boolean
         Randomize()
         If Int(Rnd() * 2) + 1 = 1 Then Return True Else Return False

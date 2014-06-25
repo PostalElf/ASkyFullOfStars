@@ -1,10 +1,10 @@
 ﻿Public Class assets
     Public Property location As location
-    Public ReadOnly Property income As Double
+    Public ReadOnly Property income(player As player) As Double
         Get
             Dim total As Double = 0
             For Each asset In assetList
-                total += asset.income
+                If asset.owner.Equals(player) Then total += asset.income
             Next
             Return total
         End Get
@@ -18,7 +18,7 @@
         Else
             Dim str As String = ""
             For Each asset In assetList
-                str &= vbSpace & "Asset: " & asset.ToString & vbNewLine
+                str &= vbSpace & "Assets: " & asset.ToString & vbNewLine
             Next
             Return str
         End If

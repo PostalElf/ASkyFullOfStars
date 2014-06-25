@@ -28,10 +28,11 @@
     Public Property supply As New List(Of eGood)
     Public Property demand As New List(Of eGood)
 
-    Public Overrides Function ToString() As String
+    Public Overloads Function ToString(player As player) As String
         Dim str As String = name & vbNewLine
 
         str &= vbSpace & "Size: " & size & vbNewLine
+        str &= vbSpace & "Income: " & signAndValue(assets.income(player)) & vbNewLine
         str &= assets.ToString
         For Each item In supply
             str &= vbSpace & "Supply: " & good.goodType2String(item) & vbNewLine

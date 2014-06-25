@@ -9,25 +9,6 @@
     End Property
     Public Overrides Property agents As New List(Of agent)
     Public Overrides Property assets As assets = New assets(Me)
-    Public ReadOnly Property income As Double
-        Get
-            Dim assetTotal As Double = 0
-            Dim goodsTotal As Double = 0
-
-            For Each star In starmap.stars
-                For Each planet In star.planets
-                    For Each city In planet.cities
-                        assetTotal += city.assets.income
-                        goodsTotal += countMatchingGoods(city) * 2
-                    Next
-                Next
-            Next
-
-            assetTotal += assets.income
-
-            Return assetTotal + goodsTotal
-        End Get
-    End Property
     Public Property orbiting As location = Nothing
 
     Public Overrides Function ToString() As String
@@ -39,9 +20,6 @@
             str &= vbSpace & "Goods: " & good.ToString & vbNewLine
         Next
 
-        str &= vbNewLine
-        str &= vbSpace & "Total Income: " & sign(income) & income & vbNewLine
-
         Return str
     End Function
     Public Sub New(_owner As player, _starmap As starmap)
@@ -51,7 +29,7 @@
 
 #Region "goods"
     Public Property goods As New List(Of good)          'holds all goods that are in the supply chain
-    Private Function countMatchingGoods(city As city) As Integer
+    Public Function countMatchingGoods(city As city) As Integer
         'count the number of goods that match a given city
         'if a good's destination is X, X must have demand
 
