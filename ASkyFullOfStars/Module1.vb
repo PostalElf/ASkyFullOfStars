@@ -91,7 +91,7 @@
 
     Private Function generateCapital(ByRef player As player, ByRef starmap As starmap) As capital
         Dim capital As New capital(player, starmap)
-        capital.assets.add(New asset("Imperial Bonds", eAsset.Investment, capital, player, 999, 3))
+        capital.assets.add(New infrastructureAsset("Imperial Bonds", capital, player, 999, 3))
 
         'good test
         Dim sourceCity As city = starmap.stars(0).planets(0).cities(0)

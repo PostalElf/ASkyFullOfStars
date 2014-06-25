@@ -9,7 +9,7 @@ Public Class filefetch
 
 
     Public Function getPlayer() As player
-        Return New player("Tubby")
+        Return New player("Not Tubby")
     End Function
 
 
@@ -209,34 +209,35 @@ Public Class filefetch
     End Sub
 
     Private Function getAsset(ByRef reader As XmlReader, ByRef location As location, ByRef player As player) As asset
-        Dim assetName As String = reader.GetAttribute(0)
-        Dim assetType As eAsset = CInt(reader.GetAttribute(1))
-        Dim assetTTL As Integer = CInt(reader.GetAttribute(2))
-        Dim assetIncome As Double = CDbl(reader.GetAttribute(3))
+        Dim assetName As String = reader.GetAttribute(seq)
+        Dim assetType As eAsset = CInt(reader.GetAttribute(seq))
+        Dim assetTTL As Integer = CInt(reader.GetAttribute(seq))
+        Dim assetIncome As Double = CDbl(reader.GetAttribute(seq))
 
         Select Case assetType
             Case eAsset.Debuff
-                Return New debuffAsset(assetName, location, player, assetTTL, assetIncome)
+                getAsset = New debuffAsset(assetName, location, player, assetTTL, assetIncome)
             Case eAsset.Infrastructure
-                Return New infrastructureAsset(assetName, location, player, assetTTL, assetIncome)
+                getAsset = New infrastructureAsset(assetName, location, player, assetTTL, assetIncome)
             Case eAsset.Investment
-                Dim requiredSupply As eGood = reader.GetAttribute(4)
-                Return New investmentAsset(assetName, location, player, assetTTL, assetIncome, requiredSupply, Nothing)
+                Dim requiredSupply As eGood = reader.GetAttribute(seq)
+                getAsset = New investmentAsset(assetName, location, player, assetTTL, assetIncome, requiredSupply, Nothing)
             Case eAsset.Military
-                Dim unitType As eUnit = reader.GetAttribute(4)
-                Dim unitPower As Double = CDbl(reader.GetAttribute(5))
-                Return New militaryAsset(assetName, location, player, assetTTL, assetIncome, unitType, unitPower)
+                Dim unitType As eUnit = reader.GetAttribute(seq)
+                Dim unitPower As Double = CDbl(reader.GetAttribute(seq))
+                getAsset = New militaryAsset(assetName, location, player, assetTTL, assetIncome, unitType, unitPower)
             Case eAsset.Production
-                Dim supply As eGood = reader.GetAttribute(4)
-                Dim demand As eGood = reader.GetAttribute(5)
-                Return New productionAsset(assetName, location, player, assetIncome, demand, supply)
+                Dim supply As eGood = reader.GetAttribute(seq)
+                Dim demand As eGood = reader.GetAttribute(seq)
+                getAsset = New productionAsset(assetName, location, player, assetIncome, demand, supply)
             Case eAsset.Provocateur
-                Dim min As Integer = reader.GetAttribute(4)
-                Dim max As Integer = reader.GetAttribute(5)
-                Return New provocateurAsset(assetName, location, player, assetTTL, assetIncome, New range(min, max))
-            Case Else : Return Nothing
+                Dim min As Integer = reader.GetAttribute(seq)
+                Dim max As Integer = reader.GetAttribute(seq)
+                getAsset = New provocateurAsset(assetName, location, player, assetTTL, assetIncome, New range(min, max))
+            Case Else : getAsset = Nothing
         End Select
-        Return New asset(assetName, assetType, location, player, assetTTL, assetIncome)
+
+        seqValue = 0
     End Function
     Private Sub writeAsset(ByRef writer As XmlWriter, ByRef asset As asset, assetName As String)
         writer.WriteStartElement(assetName)
@@ -282,6 +283,11 @@ Public Class filefetch
 
         writer.WriteEndElement()
     End Sub
+    Private Property seqValue As Integer = 0
+    Private Function seq() As Integer
+        seq = seqValue
+        seqValue += 1
+    End Function
 
 #Region "IDisposable Support"
     Private disposedValue As Boolean ' To detect redundant calls
