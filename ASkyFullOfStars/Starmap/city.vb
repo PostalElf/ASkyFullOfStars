@@ -53,6 +53,45 @@
         number = _number
     End Sub
 
+    Public Function landAgent(owner As player, agent As agent) As report
+        Dim relationship As relationship = getRelationship(owner)
+        If relationship Is Nothing Then
+            'no relationship exists yet
+            'add one and move on
+            relationship = New relationship(owner, Me)
+            relationships.Add(relationship)
+        End If
+
+        'land the agent
+        relationship.agents.Add(agent)
+        agent.location = Me
+
+
+        'return report
+        Return New report()
+    End Function
+    Public Function disembarkAgent(owner As player, agent As agent, capital As capital) As report
+        Dim relationship As relationship = getRelationship(owner)
+        If relationship Is Nothing Then
+            'relationship is empty
+            'therefore, definitely no agents
+            Return Nothing
+        End If
+
+        For Each currentagent In relationship.agents
+            If currentagent.Equals(agent) Then
+                'found agent
+                'move him offworld and into the capital
+                relationship.agents.Remove(currentagent)
+                currentagent.location = capital
+
+
+                'return report
+                Return New report()
+            End If
+        Next
+        Return Nothing
+    End Function
 
     Public Function tick() As List(Of report)
         Dim replist As New List(Of report)
