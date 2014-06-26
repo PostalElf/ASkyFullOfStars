@@ -1,8 +1,13 @@
 ﻿Public Class asset
     Public Property name As String
     Public Property type As eAsset
-    Public Property location As location
     Public Property owner As player
+    Public Property location As location
+    Public ReadOnly Property relationship As relationship
+        Get
+            Return location.getRelationship(owner)
+        End Get
+    End Property
     Public Property ttl As Integer              'TTL 999 = infinite
     Public Property income As Double
     Public Property onExpire As asset
@@ -30,7 +35,7 @@
 
             'unfold onExpire
             If onExpire Is Nothing = False Then
-                location.assets.construct(onExpire)
+                relationship.assets.construct(onExpire)
                 Return New report
             End If
         End If
@@ -40,10 +45,9 @@
     Private Sub onDeconstruct()
         Select Case type
             Case eAsset.Investment
+                'remove good consumption
                 Dim invAsset As investmentAsset = CType(Me, investmentAsset)
                 Dim city As city = CType(location, city)
-                If invAsset.requiredSupply = 0 Then Exit Sub
-                city.supply.Add(invAsset.requiredSupply)
         End Select
     End Sub
 End Class

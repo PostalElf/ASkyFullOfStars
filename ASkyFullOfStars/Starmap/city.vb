@@ -9,9 +9,12 @@
     End Property
     Public ReadOnly Property id As String
         Get
+            'only used for filefetch
             Return planet.star.name & " " & planet.number & " " & number
         End Get
     End Property
+    Public Overrides Property relationships As New List(Of relationship)
+    Public Property goods As New goods(Me)
     Public ReadOnly Property government
         Get
             Return planet.government
@@ -23,27 +26,17 @@
         End Get
     End Property
     Public Property size As Integer
-    Public Overrides Property assets As New assets(Me)
-    Public Overrides Property agents As New List(Of agent)
-    Public Property supply As New List(Of eGood)
-    Public Property demand As New List(Of eGood)
 
-    Public Overloads Function ToString(player As player) As String
+    Public Overloads Function ToString() As String
         Dim str As String = name & vbNewLine
 
         str &= vbSpace & "Size: " & size & vbNewLine
-        str &= vbSpace & "Income: " & signAndValue(assets.income(player)) & vbNewLine
-        str &= assets.ToString
-        For Each item In supply
-            str &= vbSpace & "Supply: " & good.goodType2String(item) & vbNewLine
-        Next
-        For Each item In demand
-            str &= vbSpace & "Demand: " & good.goodType2String(item) & vbNewLine
+
+        For Each relationship In relationships
+            str &= relationship.ToString() & vbNewLine
         Next
 
-        'agents are not read from XML at starmap level
-        str &= vbSpace & "Agents: " & agents.Count
-        str &= vbNewLine
+        str &= goods.ToString
 
         Return str
     End Function
@@ -51,8 +44,9 @@
         planet = _planet
         number = _number
         size = starmapBuilder.rndCitySize
-        supply.Add(starmapBuilder.rndSupply(_planet.type, Me))
-        demand.Add(starmapBuilder.rndDemand(_planet.type, Me))
+
+        goods.addSupply(starmapBuilder.rndSupply(_planet.type, Me))
+        goods.addDemand(starmapBuilder.rndDemand(_planet.type, Me))
     End Sub
     Public Sub New(_planet As planet, _number As Integer)
         planet = _planet
@@ -63,7 +57,9 @@
     Public Function tick() As List(Of report)
         Dim replist As New List(Of report)
 
-        replist.AddRange(assets.tick)
+        For Each relationship In relationships
+            replist.AddRange(relationship.assets.tick)
+        Next
 
         Return replist
     End Function

@@ -5,8 +5,7 @@
             Return star.name & " " & number
         End Get
     End Property
-    Public Overrides Property assets As New assets(Me)
-    Public Overrides Property agents As New List(Of agent)
+    Public Overrides Property relationships As New List(Of relationship)
     Public Property star As star
     Public Property number As Integer
     Public Property government As eGovernment
@@ -50,7 +49,9 @@
             replist.AddRange(city.tick)
         Next
 
-        replist.AddRange(assets.tick)
+        For Each relationship In relationships
+            replist.AddRange(relationship.assets.tick)
+        Next
 
         Return replist
     End Function

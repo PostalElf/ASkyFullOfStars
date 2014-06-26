@@ -4,7 +4,19 @@
     Public Property destination As location
 
     Public Overrides Function ToString() As String
-        Return "(" & good.goodType2String(type) & ") " & source.name & " -> " & destination.name
+        If source Is Nothing AndAlso destination Is Nothing Then
+            'something's wrong
+            bugcatch.alert(Me, "bug in class good")
+            Return Nothing
+        ElseIf source Is Nothing Then
+            'is a demand
+            Return "Demand: " & goodType2String(type)
+        ElseIf destination Is Nothing Then
+            Return "Supply: " & goodType2String(type)
+        Else
+            'fulfilled contract
+            Return "Contract: " & goodType2String(type) & " from " & source.name & " to " & destination.name
+        End If
     End Function
     Public Sub New(_type As eGood, _source As location, _destination As location)
         type = _type

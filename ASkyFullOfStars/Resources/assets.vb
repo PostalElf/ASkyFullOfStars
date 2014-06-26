@@ -85,15 +85,8 @@
                 If TypeOf location Is city = False Then Return New erroll
                 Dim invAsset As investmentAsset = CType(asset, investmentAsset)
                 Dim city As city = CType(location, city)
-                If city.supply.Contains(invAsset.requiredSupply) Then
-                    'has supply; consume it before adding asset
-                    'supply will be returned on TTL <= 0 within asset.tick.onDeconstruct
-                    city.supply.Remove(invAsset.requiredSupply)
-                    Return Nothing
-                Else
-                    'has no supply, cannot build
-                    Return New erroll
-                End If
+                'consume a particular good that's being produced
+                Return Nothing
 
             Case Else
                 Return Nothing

@@ -1,323 +1,324 @@
-﻿Imports System.Xml
+﻿'Imports System.Xml
 
-Public Class filefetch
-    Implements IDisposable
-    Private Const filePath As String = "data\"
-    Private Const playerFilename As String = "player.xml"
-    Private Const starmapFilename As String = "starmap.xml"
-    Private Const capitalFilename As String = "capital.xml"
-
-
-    Public Function getPlayer() As player
-        Return New player("Not Tubby")
-    End Function
+'Public Class filefetch
+'    Implements IDisposable
+'    Private Const filePath As String = "data\"
+'    Private Const playerFilename As String = "player.xml"
+'    Private Const starmapFilename As String = "starmap.xml"
+'    Private Const capitalFilename As String = "capital.xml"
 
 
-    Public Function getStarmap(player As player) As starmap
-        Dim xmlSettings As New XmlReaderSettings
-        Dim starmap As New starmap
-        Dim currentStar As star = Nothing
-        Dim currentPlanet As planet = Nothing
-        Dim currentCity As city = Nothing
-        Dim currentAsset As asset = Nothing
+'    Public Function getPlayer() As player
+'        Return New player("Not Tubby")
+'    End Function
 
-        Using reader As XmlReader = XmlReader.Create(filePath & starmapFilename, xmlSettings)
-            While reader.Read()
-                If reader.IsStartElement = True Then
-                    Select Case reader.Name
-                        Case "star"
-                            Dim star As New star(starmap)
-                            star.starname = reader.GetAttribute(0)
-                            Dim splitString() As String = Split(reader.GetAttribute(1))
-                            star.starXY = New xy(splitString(0), splitString(1))
-                            starmap.stars.Add(star)
-                            currentStar = star
 
-                        Case "planet"
-                            Dim starname As String = reader.GetAttribute(0)
-                            Dim planet As New planet(currentStar, reader.GetAttribute(1))
-                            planet.government = reader.GetAttribute(2)
-                            planet.type = reader.GetAttribute(3)
-                            currentStar.planets.Add(planet)
-                            currentPlanet = planet
+'    Public Function getStarmap(player As player) As starmap
+'        Dim xmlSettings As New XmlReaderSettings
+'        Dim starmap As New starmap
+'        Dim currentStar As star = Nothing
+'        Dim currentPlanet As planet = Nothing
+'        Dim currentCity As city = Nothing
+'        Dim currentAsset As asset = Nothing
 
-                        Case "planetAsset"
-                            currentAsset = getAsset(reader, currentPlanet, player)
-                            currentPlanet.assets.add(currentAsset)
+'        Using reader As XmlReader = XmlReader.Create(filePath & starmapFilename, xmlSettings)
+'            While reader.Read()
+'                If reader.IsStartElement = True Then
+'                    Select Case reader.Name
+'                        Case "star"
+'                            Dim star As New star(starmap)
+'                            star.starname = reader.GetAttribute(0)
+'                            Dim splitString() As String = Split(reader.GetAttribute(1))
+'                            star.starXY = New xy(splitString(0), splitString(1))
+'                            starmap.stars.Add(star)
+'                            currentStar = star
 
-                        Case "city"
-                            Dim starname As String = reader.GetAttribute(0)
-                            Dim planetnumber As Integer = reader.GetAttribute(1)
-                            Dim city As New city(currentPlanet, reader.GetAttribute(2))
-                            city.size = reader.GetAttribute(3)
-                            currentPlanet.cities.Add(city)
-                            currentCity = city
+'                        Case "planet"
+'                            Dim starname As String = reader.GetAttribute(0)
+'                            Dim planet As New planet(currentStar, reader.GetAttribute(1))
+'                            planet.government = reader.GetAttribute(2)
+'                            planet.type = reader.GetAttribute(3)
+'                            currentStar.planets.Add(planet)
+'                            currentPlanet = planet
 
-                        Case "supply"
-                            currentCity.supply.Add(reader.GetAttribute(0))
+'                        Case "planetAsset"
+'                            currentAsset = getAsset(reader, currentPlanet, player)
+'                            currentPlanet.assets.add(currentAsset)
 
-                        Case "demand"
-                            currentCity.demand.Add(reader.GetAttribute(0))
+'                        Case "city"
+'                            Dim starname As String = reader.GetAttribute(0)
+'                            Dim planetnumber As Integer = reader.GetAttribute(1)
+'                            Dim city As New city(currentPlanet, reader.GetAttribute(2))
+'                            city.size = reader.GetAttribute(3)
+'                            currentPlanet.cities.Add(city)
+'                            currentCity = city
 
-                        Case "cityAsset"
-                            currentAsset = getAsset(reader, currentCity, player)
-                            currentCity.assets.add(currentAsset)
+'                        Case "supply"
+'                            currentCity.supply.Add(reader.GetAttribute(0))
 
-                        Case "assetOnExpire"
-                            Dim onExpire As asset = getAsset(reader, currentAsset.location, currentAsset.owner)
-                            currentAsset.onExpire = onExpire
-                            currentAsset = onExpire
+'                        Case "demand"
+'                            currentCity.demand.Add(reader.GetAttribute(0))
 
-                    End Select
-                End If
-            End While
-        End Using
+'                        Case "cityAsset"
+'                            currentAsset = getAsset(reader, currentCity, player)
+'                            Dim relationship As relationship = currentCity.getRelationship(player)
+'                            relationship.assets.add(currentAsset)
 
-        Return starmap
-    End Function
-    Public Sub writeStarmap(ByRef starmap As starmap)
-        Dim xmlSettings As New XmlWriterSettings
-        xmlSettings.Indent = True
+'                        Case "assetOnExpire"
+'                            Dim onExpire As asset = getAsset(reader, currentAsset.location, currentAsset.owner)
+'                            currentAsset.onExpire = onExpire
+'                            currentAsset = onExpire
 
-        Using writer As XmlWriter = XmlWriter.Create(filePath & starmapFilename, xmlSettings)
-            writer.WriteStartDocument()
-            writer.WriteStartElement("starmap")     'root
+'                    End Select
+'                End If
+'            End While
+'        End Using
 
-            For Each star In starmap.stars
-                writer.WriteStartElement("star")
-                writer.WriteStartAttribute("name")
-                writer.WriteString(star.name)
-                writer.WriteStartAttribute("xy")
-                writer.WriteString(star.starXY.x & " " & star.starXY.y)
-                writer.WriteEndAttribute()
+'        Return starmap
+'    End Function
+'    Public Sub writeStarmap(ByRef starmap As starmap)
+'        Dim xmlSettings As New XmlWriterSettings
+'        xmlSettings.Indent = True
 
-                For Each planet In star.planets
-                    writer.WriteStartElement("planet")
-                    writer.WriteStartAttribute("starname")
-                    writer.WriteString(planet.star.name)
-                    writer.WriteStartAttribute("number")
-                    writer.WriteString(planet.number)
-                    writer.WriteStartAttribute("government")
-                    writer.WriteString(planet.government)
-                    writer.WriteStartAttribute("type")
-                    writer.WriteString(planet.type)
-                    writer.WriteEndAttribute()
+'        Using writer As XmlWriter = XmlWriter.Create(filePath & starmapFilename, xmlSettings)
+'            writer.WriteStartDocument()
+'            writer.WriteStartElement("starmap")     'root
 
-                    For Each asset In planet.assets.getAssets(eAsset.All)
-                        writeAsset(writer, asset, "planetAsset")
-                    Next
+'            For Each star In starmap.stars
+'                writer.WriteStartElement("star")
+'                writer.WriteStartAttribute("name")
+'                writer.WriteString(star.name)
+'                writer.WriteStartAttribute("xy")
+'                writer.WriteString(star.starXY.x & " " & star.starXY.y)
+'                writer.WriteEndAttribute()
 
-                    For Each city In planet.cities
-                        writer.WriteStartElement("city")
-                        writer.WriteStartAttribute("starname")
-                        writer.WriteString(city.planet.star.name)
-                        writer.WriteStartAttribute("planetnumber")
-                        writer.WriteString(city.planet.number)
-                        writer.WriteStartAttribute("number")
-                        writer.WriteString(city.number)
-                        writer.WriteStartAttribute("size")
-                        writer.WriteString(city.size)
-                        writer.WriteEndAttribute()
+'                For Each planet In star.planets
+'                    writer.WriteStartElement("planet")
+'                    writer.WriteStartAttribute("starname")
+'                    writer.WriteString(planet.star.name)
+'                    writer.WriteStartAttribute("number")
+'                    writer.WriteString(planet.number)
+'                    writer.WriteStartAttribute("government")
+'                    writer.WriteString(planet.government)
+'                    writer.WriteStartAttribute("type")
+'                    writer.WriteString(planet.type)
+'                    writer.WriteEndAttribute()
 
-                        For Each supply In city.supply
-                            writer.WriteStartElement("supply")
-                            writer.WriteStartAttribute("type")
-                            writer.WriteString(supply)
-                            writer.WriteEndAttribute()
-                            writer.WriteEndElement()
-                        Next
+'                    For Each asset In planet.assets.getAssets(eAsset.All)
+'                        writeAsset(writer, asset, "planetAsset")
+'                    Next
 
-                        For Each demand In city.demand
-                            writer.WriteStartElement("demand")
-                            writer.WriteStartAttribute("type")
-                            writer.WriteString(demand)
-                            writer.WriteEndAttribute()
-                            writer.WriteEndElement()
-                        Next
+'                    For Each city In planet.cities
+'                        writer.WriteStartElement("city")
+'                        writer.WriteStartAttribute("starname")
+'                        writer.WriteString(city.planet.star.name)
+'                        writer.WriteStartAttribute("planetnumber")
+'                        writer.WriteString(city.planet.number)
+'                        writer.WriteStartAttribute("number")
+'                        writer.WriteString(city.number)
+'                        writer.WriteStartAttribute("size")
+'                        writer.WriteString(city.size)
+'                        writer.WriteEndAttribute()
 
-                        For Each asset In city.assets.getAssets(eAsset.All)
-                            writeAsset(writer, asset, "cityAsset")
-                        Next
+'                        For Each supply In city.supply
+'                            writer.WriteStartElement("supply")
+'                            writer.WriteStartAttribute("type")
+'                            writer.WriteString(supply)
+'                            writer.WriteEndAttribute()
+'                            writer.WriteEndElement()
+'                        Next
 
-                        writer.WriteEndElement()        'closes city
-                    Next
+'                        For Each demand In city.demand
+'                            writer.WriteStartElement("demand")
+'                            writer.WriteStartAttribute("type")
+'                            writer.WriteString(demand)
+'                            writer.WriteEndAttribute()
+'                            writer.WriteEndElement()
+'                        Next
 
-                    writer.WriteEndElement()            'closes planet
-                Next
+'                        For Each asset In city.assets.getAssets(eAsset.All)
+'                            writeAsset(writer, asset, "cityAsset")
+'                        Next
 
-                writer.WriteEndElement()                'closes star
-            Next
+'                        writer.WriteEndElement()        'closes city
+'                    Next
 
-            writer.WriteEndElement()                'closes root
-            writer.WriteEndDocument()
-        End Using
-    End Sub
+'                    writer.WriteEndElement()            'closes planet
+'                Next
 
-    Public Function getCapital(player As player, starmap As starmap) As capital
-        Dim xmlSettings As New XmlReaderSettings
-        Dim capital As New capital(player, starmap)
+'                writer.WriteEndElement()                'closes star
+'            Next
 
-        Using reader As XmlReader = XmlReader.Create(filePath & capitalFilename, xmlSettings)
-            While reader.Read()
-                If reader.IsStartElement = True Then
-                    Select Case reader.Name
-                        Case "good"
-                            Dim type As eGood = reader.GetAttribute(0)
-                            Dim source As city = starmap.getCity(reader.GetAttribute(1))
-                            Dim dest As city = starmap.getCity(reader.GetAttribute(2))
-                            capital.goods.Add(New good(type, source, dest))
+'            writer.WriteEndElement()                'closes root
+'            writer.WriteEndDocument()
+'        End Using
+'    End Sub
 
-                        Case "asset"
-                            capital.assets.add(getAsset(reader, capital, player))
+'    Public Function getCapital(player As player, starmap As starmap) As capital
+'        Dim xmlSettings As New XmlReaderSettings
+'        Dim capital As New capital(player, starmap)
 
-                    End Select
-                End If
-            End While
-        End Using
+'        Using reader As XmlReader = XmlReader.Create(filePath & capitalFilename, xmlSettings)
+'            While reader.Read()
+'                If reader.IsStartElement = True Then
+'                    Select Case reader.Name
+'                        Case "good"
+'                            Dim type As eGood = reader.GetAttribute(0)
+'                            Dim source As city = starmap.getCity(reader.GetAttribute(1))
+'                            Dim dest As city = starmap.getCity(reader.GetAttribute(2))
+'                            capital.goods.Add(New good(type, source, dest))
 
-        Return capital
-    End Function
-    Public Sub writeCapital(ByRef capital As capital)
-        Dim xmlSettings As New XmlWriterSettings
-        xmlSettings.Indent = True
+'                        Case "asset"
+'                            capital.assets.add(getAsset(reader, capital, player))
 
-        Using writer As XmlWriter = XmlWriter.Create(filePath & capitalFilename, xmlSettings)
-            writer.WriteStartDocument()
-            writer.WriteStartElement("capital")     'root
+'                    End Select
+'                End If
+'            End While
+'        End Using
 
-            For Each good In capital.goods
-                writer.WriteStartElement("good")
-                writer.WriteStartAttribute("type")
-                writer.WriteString(good.type)
-                writer.WriteStartAttribute("source")
-                Dim source As city = CType(good.source, city)
-                writer.WriteString(source.id)
-                writer.WriteStartAttribute("destination")
-                Dim dest As city = CType(good.destination, city)
-                writer.WriteString(dest.id)
-                writer.WriteEndAttribute()
-                writer.WriteEndElement()
-            Next
+'        Return capital
+'    End Function
+'    Public Sub writeCapital(ByRef capital As capital)
+'        Dim xmlSettings As New XmlWriterSettings
+'        xmlSettings.Indent = True
 
-            For Each asset In capital.assets.getAssets(eAsset.All)
-                writeAsset(writer, asset, "asset")
-            Next
+'        Using writer As XmlWriter = XmlWriter.Create(filePath & capitalFilename, xmlSettings)
+'            writer.WriteStartDocument()
+'            writer.WriteStartElement("capital")     'root
 
-            writer.WriteEndElement()              'closes root
-            writer.WriteEndDocument()
-        End Using
-    End Sub
+'            For Each good In capital.goods
+'                writer.WriteStartElement("good")
+'                writer.WriteStartAttribute("type")
+'                writer.WriteString(good.type)
+'                writer.WriteStartAttribute("source")
+'                Dim source As city = CType(good.source, city)
+'                writer.WriteString(source.id)
+'                writer.WriteStartAttribute("destination")
+'                Dim dest As city = CType(good.destination, city)
+'                writer.WriteString(dest.id)
+'                writer.WriteEndAttribute()
+'                writer.WriteEndElement()
+'            Next
 
-    Private Function getAsset(ByRef reader As XmlReader, ByRef location As location, ByRef player As player) As asset
-        Dim assetName As String = reader.GetAttribute(seq)
-        Dim assetType As eAsset = CInt(reader.GetAttribute(seq))
-        Dim assetTTL As Integer = CInt(reader.GetAttribute(seq))
-        Dim assetIncome As Double = CDbl(reader.GetAttribute(seq))
+'            For Each asset In capital.assets.getAssets(eAsset.All)
+'                writeAsset(writer, asset, "asset")
+'            Next
 
-        Select Case assetType
-            Case eAsset.Debuff
-                getAsset = New debuffAsset(assetName, location, player, assetTTL, assetIncome)
-            Case eAsset.Infrastructure
-                getAsset = New infrastructureAsset(assetName, location, player, assetTTL, assetIncome)
-            Case eAsset.Investment
-                Dim requiredSupply As eGood = reader.GetAttribute(seq)
-                getAsset = New investmentAsset(assetName, location, player, assetTTL, assetIncome, requiredSupply, Nothing)
-            Case eAsset.Military
-                Dim unitType As eUnit = reader.GetAttribute(seq)
-                Dim unitPower As Double = CDbl(reader.GetAttribute(seq))
-                getAsset = New militaryAsset(assetName, location, player, assetTTL, assetIncome, unitType, unitPower)
-            Case eAsset.Production
-                Dim supply As eGood = reader.GetAttribute(seq)
-                Dim demand As eGood = reader.GetAttribute(seq)
-                getAsset = New productionAsset(assetName, location, player, assetIncome, demand, supply)
-            Case eAsset.Provocateur
-                Dim min As Integer = reader.GetAttribute(seq)
-                Dim max As Integer = reader.GetAttribute(seq)
-                getAsset = New provocateurAsset(assetName, location, player, assetTTL, assetIncome, New range(min, max))
-            Case Else : getAsset = Nothing
-        End Select
+'            writer.WriteEndElement()              'closes root
+'            writer.WriteEndDocument()
+'        End Using
+'    End Sub
 
-        seqValue = 0
-    End Function
-    Private Sub writeAsset(ByRef writer As XmlWriter, ByRef asset As asset, assetName As String)
-        writer.WriteStartElement(assetName)
-        writer.WriteStartAttribute("name")
-        writer.WriteString(asset.name)
-        writer.WriteStartAttribute("type")
-        writer.WriteString(asset.type)
-        writer.WriteStartAttribute("ttl")
-        writer.WriteString(asset.ttl)
-        writer.WriteStartAttribute("income")
-        writer.WriteString(asset.income)
+'    Private Function getAsset(ByRef reader As XmlReader, ByRef location As location, ByRef player As player) As asset
+'        Dim assetName As String = reader.GetAttribute(seq)
+'        Dim assetType As eAsset = CInt(reader.GetAttribute(seq))
+'        Dim assetTTL As Integer = CInt(reader.GetAttribute(seq))
+'        Dim assetIncome As Double = CDbl(reader.GetAttribute(seq))
 
-        Select Case asset.type
-            Case eAsset.Debuff                  'do nothing
-            Case eAsset.Infrastructure          'do nothing
-            Case eAsset.Investment
-                Dim invAsset As investmentAsset = CType(asset, investmentAsset)
-                writer.WriteStartAttribute("requiredSupply")
-                writer.WriteString(invAsset.requiredSupply)
-            Case eAsset.Military
-                Dim milasset As militaryAsset = CType(asset, militaryAsset)
-                writer.WriteStartAttribute("unitType")
-                writer.WriteString(milasset.unitType)
-                writer.WriteStartAttribute("unitPower")
-                writer.WriteString(milasset.unitPower)
-            Case eAsset.Production
-                Dim prodAsset As productionAsset = CType(asset, productionAsset)
-                writer.WriteStartAttribute("supply")
-                writer.WriteString(prodAsset.supply)
-                writer.WriteStartAttribute("demand")
-                writer.WriteString(prodAsset.demand)
-            Case eAsset.Provocateur
-                Dim provAsset As provocateurAsset = CType(asset, provocateurAsset)
-                writer.WriteStartAttribute("min")
-                writer.WriteString(provAsset.chaosIncome.min)
-                writer.WriteStartAttribute("max")
-                writer.WriteString(provAsset.chaosIncome.max)
-        End Select
+'        Select Case assetType
+'            Case eAsset.Debuff
+'                getAsset = New debuffAsset(assetName, location, player, assetTTL, assetIncome)
+'            Case eAsset.Infrastructure
+'                getAsset = New infrastructureAsset(assetName, location, player, assetTTL, assetIncome)
+'            Case eAsset.Investment
+'                Dim requiredSupply As eGood = reader.GetAttribute(seq)
+'                getAsset = New investmentAsset(assetName, location, player, assetTTL, assetIncome, requiredSupply, Nothing)
+'            Case eAsset.Military
+'                Dim unitType As eUnit = reader.GetAttribute(seq)
+'                Dim unitPower As Double = CDbl(reader.GetAttribute(seq))
+'                getAsset = New militaryAsset(assetName, location, player, assetTTL, assetIncome, unitType, unitPower)
+'            Case eAsset.Production
+'                Dim supply As eGood = reader.GetAttribute(seq)
+'                Dim demand As eGood = reader.GetAttribute(seq)
+'                getAsset = New productionAsset(assetName, location, player, assetIncome, demand, supply)
+'            Case eAsset.Provocateur
+'                Dim min As Integer = reader.GetAttribute(seq)
+'                Dim max As Integer = reader.GetAttribute(seq)
+'                getAsset = New provocateurAsset(assetName, location, player, assetTTL, assetIncome, New range(min, max))
+'            Case Else : getAsset = Nothing
+'        End Select
 
-        writer.WriteEndAttribute()
+'        seqValue = 0
+'    End Function
+'    Private Sub writeAsset(ByRef writer As XmlWriter, ByRef asset As asset, assetName As String)
+'        writer.WriteStartElement(assetName)
+'        writer.WriteStartAttribute("name")
+'        writer.WriteString(asset.name)
+'        writer.WriteStartAttribute("type")
+'        writer.WriteString(asset.type)
+'        writer.WriteStartAttribute("ttl")
+'        writer.WriteString(asset.ttl)
+'        writer.WriteStartAttribute("income")
+'        writer.WriteString(asset.income)
 
-        If asset.onExpire Is Nothing = False Then writeAsset(writer, asset.onExpire, "assetOnExpire")
+'        Select Case asset.type
+'            Case eAsset.Debuff                  'do nothing
+'            Case eAsset.Infrastructure          'do nothing
+'            Case eAsset.Investment
+'                Dim invAsset As investmentAsset = CType(asset, investmentAsset)
+'                writer.WriteStartAttribute("requiredSupply")
+'                writer.WriteString(invAsset.requiredSupply)
+'            Case eAsset.Military
+'                Dim milasset As militaryAsset = CType(asset, militaryAsset)
+'                writer.WriteStartAttribute("unitType")
+'                writer.WriteString(milasset.unitType)
+'                writer.WriteStartAttribute("unitPower")
+'                writer.WriteString(milasset.unitPower)
+'            Case eAsset.Production
+'                Dim prodAsset As productionAsset = CType(asset, productionAsset)
+'                writer.WriteStartAttribute("supply")
+'                writer.WriteString(prodAsset.supply)
+'                writer.WriteStartAttribute("demand")
+'                writer.WriteString(prodAsset.demand)
+'            Case eAsset.Provocateur
+'                Dim provAsset As provocateurAsset = CType(asset, provocateurAsset)
+'                writer.WriteStartAttribute("min")
+'                writer.WriteString(provAsset.chaosIncome.min)
+'                writer.WriteStartAttribute("max")
+'                writer.WriteString(provAsset.chaosIncome.max)
+'        End Select
 
-        writer.WriteEndElement()
-    End Sub
-    Private Property seqValue As Integer = 0
-    Private Function seq() As Integer
-        seq = seqValue
-        seqValue += 1
-    End Function
+'        writer.WriteEndAttribute()
 
-#Region "IDisposable Support"
-    Private disposedValue As Boolean ' To detect redundant calls
+'        If asset.onExpire Is Nothing = False Then writeAsset(writer, asset.onExpire, "assetOnExpire")
 
-    ' IDisposable
-    Protected Overridable Sub Dispose(disposing As Boolean)
-        If Not Me.disposedValue Then
-            If disposing Then
-                ' TODO: dispose managed state (managed objects).
-            End If
+'        writer.WriteEndElement()
+'    End Sub
+'    Private Property seqValue As Integer = 0
+'    Private Function seq() As Integer
+'        seq = seqValue
+'        seqValue += 1
+'    End Function
 
-            ' TODO: free unmanaged resources (unmanaged objects) and override Finalize() below.
-            ' TODO: set large fields to null.
-        End If
-        Me.disposedValue = True
-    End Sub
+'#Region "IDisposable Support"
+'    Private disposedValue As Boolean ' To detect redundant calls
 
-    ' TODO: override Finalize() only if Dispose(ByVal disposing As Boolean) above has code to free unmanaged resources.
-    'Protected Overrides Sub Finalize()
-    '    ' Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
-    '    Dispose(False)
-    '    MyBase.Finalize()
-    'End Sub
+'    ' IDisposable
+'    Protected Overridable Sub Dispose(disposing As Boolean)
+'        If Not Me.disposedValue Then
+'            If disposing Then
+'                ' TODO: dispose managed state (managed objects).
+'            End If
 
-    ' This code added by Visual Basic to correctly implement the disposable pattern.
-    Public Sub Dispose() Implements IDisposable.Dispose
-        ' Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
-        Dispose(True)
-        GC.SuppressFinalize(Me)
-    End Sub
-#End Region
+'            ' TODO: free unmanaged resources (unmanaged objects) and override Finalize() below.
+'            ' TODO: set large fields to null.
+'        End If
+'        Me.disposedValue = True
+'    End Sub
 
-End Class
+'    ' TODO: override Finalize() only if Dispose(ByVal disposing As Boolean) above has code to free unmanaged resources.
+'    'Protected Overrides Sub Finalize()
+'    '    ' Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
+'    '    Dispose(False)
+'    '    MyBase.Finalize()
+'    'End Sub
+
+'    ' This code added by Visual Basic to correctly implement the disposable pattern.
+'    Public Sub Dispose() Implements IDisposable.Dispose
+'        ' Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
+'        Dispose(True)
+'        GC.SuppressFinalize(Me)
+'    End Sub
+'#End Region
+
+'End Class

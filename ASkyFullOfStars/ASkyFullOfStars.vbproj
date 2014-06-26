@@ -94,9 +94,11 @@
     </Compile>
     <Compile Include="Resources\asset.vb" />
     <Compile Include="Resources\assets.vb" />
-    <Compile Include="Player\good.vb" />
+    <Compile Include="Resources\good.vb" />
+    <Compile Include="Resources\goods.vb" />
     <Compile Include="Starmap\Base Classes\limbo.vb" />
     <Compile Include="Starmap\Base Classes\location.vb" />
+    <Compile Include="Resources\relationship.vb" />
     <Compile Include="Starmap\Base Classes\xy.vb" />
     <Compile Include="Player\capital.vb" />
     <Compile Include="Starmap\city.vb" />

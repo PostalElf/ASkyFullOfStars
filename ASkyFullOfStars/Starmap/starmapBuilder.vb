@@ -101,7 +101,7 @@ Public Class starmapBuilder
 
     Private Property demandList As New List(Of eGood)
     Private Property citySizeList As New List(Of Integer)
-    Public Function rndSupply(_type As ePlanetType, ByRef _city As location) As eGood
+    Public Function rndSupply(_type As ePlanetType, ByRef _city As location) As good
         Dim roll As Integer = Int(Rnd() * 5 + 1)
         Select Case _type
             Case ePlanetType.Mining 'do nothing
@@ -110,9 +110,10 @@ Public Class starmapBuilder
             Case ePlanetType.Agrarian : roll += 30
             Case ePlanetType.Research : roll += 40
         End Select
-        Return roll
+
+        Return New good(roll, _city, Nothing)
     End Function
-    Public Function rndDemand(_type As ePlanetType, ByRef _city As location) As eGood
+    Public Function rndDemand(_type As ePlanetType, ByRef _city As location) As good
         If demandList.Count = 0 Then popDemandList()
 
 
@@ -126,8 +127,10 @@ Public Class starmapBuilder
         End If
 
         Dim roll As Integer = rng.Next(tempList.Count)
-        rndDemand = tempList.Item(roll)
-        demandList.Remove(rndDemand)
+        Dim type As eGood = tempList.Item(roll)
+        demandList.Remove(type)
+
+        Return New good(type, Nothing, _city)
     End Function
     Private Sub popDemandList()
         demandList.Clear()

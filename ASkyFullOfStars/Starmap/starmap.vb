@@ -22,6 +22,24 @@
         End Get
     End Property
 
+    Public Overrides Function ToString() As String
+        Dim str As String = ""
+
+        For Each star In stars
+            For Each planet In star.planets
+                str &= consoleDotline(planet.ToString.Length) & vbNewLine
+                str &= planet.ToString & vbNewLine
+                str &= consoleDotline(planet.ToString.Length) & vbNewLine
+                str &= vbNewLine
+
+                For Each city In planet.cities
+                    str &= city.ToString & vbNewLine
+                Next
+            Next
+        Next
+
+        Return str
+    End Function
     Public Sub New(ByRef starmapBuilder As starmapBuilder)
         While starmapBuilder.size > 0
             stars.Add(New star(starmapBuilder, Me))
