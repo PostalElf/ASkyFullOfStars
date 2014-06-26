@@ -1,7 +1,7 @@
 ﻿Public Class army
     Public Property owner As player
     Public Property location As location
-    Private Property assets As New assets(Nothing)
+    Private Property assets As New assets(Nothing, owner)
     Public units As New List(Of unit)
     Public ReadOnly Property totalPower As Double
         Get

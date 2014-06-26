@@ -1,5 +1,11 @@
 ﻿Public Class assets
     Public Property location As location
+    Public Property owner As player
+    Public ReadOnly Property relationship As relationship
+        Get
+            Return location.getRelationship(owner)
+        End Get
+    End Property
     Public ReadOnly Property income(player As player) As Double
         Get
             Dim total As Double = 0
@@ -23,8 +29,9 @@
             Return str
         End If
     End Function
-    Public Sub New(_location As location)
+    Public Sub New(_location As location, _owner As player)
         location = _location
+        _owner = _owner
     End Sub
 
     Public Function add(asset As asset) As erroll
