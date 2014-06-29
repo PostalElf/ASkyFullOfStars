@@ -60,6 +60,10 @@
         Dim asset As asset = getAsset(name)
         remove(asset)
     End Sub
+    Public Sub construct(asset As asset)
+        newAssetList.Add(asset)
+    End Sub
+
     Public Function getAsset(name As String) As asset
         For Each asset In assetList
             If asset.name = name Then Return asset
@@ -82,9 +86,12 @@
         Next
         Return replist
     End Function
-    Public Sub construct(asset As asset)
-        newAssetList.Add(asset)
-    End Sub
+    Public Function hasAsset(name As String) As Boolean
+        For Each asset In assetList
+            If asset.name = name Then Return True
+        Next
+        Return False
+    End Function
 
     Private Function onConstruct(asset As asset) As erroll
         Select Case asset.type

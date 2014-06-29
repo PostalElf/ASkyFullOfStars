@@ -19,4 +19,8 @@
         owner = _owner
         location = _location
     End Sub
+
+    Public Function hasAsset(assetName As String) As Boolean
+        Return assets.hasAsset(assetName)
+    End Function
 End Class

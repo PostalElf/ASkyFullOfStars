@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agents\agent.vb" />
+    <Compile Include="Globals\feedback.vb" />
     <Compile Include="Player\army.vb" />
     <Compile Include="Player\player.vb" />
     <Compile Include="Globals\bugcatch.vb" />
